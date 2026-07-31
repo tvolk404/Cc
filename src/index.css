@@ -1,0 +1,189 @@
+/* ============================================================
+   Turnkey — Design System (N26-inspired)
+   Minimalist, generous whitespace, soft rounded surfaces,
+   signature mint accent, calm dark-ink typography.
+   ============================================================ */
+
+:root {
+  /* Brand */
+  --mint: #1de9b6;
+  --mint-600: #10c99c;
+  --mint-700: #0aa583;
+  --mint-soft: #d7fbf0;
+  --mint-tint: #effdf8;
+
+  /* Ink / neutrals */
+  --ink: #0a0e17;
+  --ink-800: #171b26;
+  --slate: #5b6472;
+  --slate-400: #8b93a1;
+  --line: #e9ecf1;
+  --line-soft: #f1f3f6;
+  --surface: #ffffff;
+  --canvas: #f6f7f9;
+
+  /* Accents for categories */
+  --sky: #4c8dff;
+  --sky-soft: #e6efff;
+  --violet: #8b6cff;
+  --violet-soft: #efeaff;
+  --amber: #ffb020;
+  --amber-soft: #fff3dc;
+  --rose: #ff5d73;
+  --rose-soft: #ffe6ea;
+  --grape: #d264ff;
+  --grape-soft: #f8e8ff;
+
+  /* Status */
+  --ok: #10b981;
+  --ok-soft: #d9f6ec;
+  --warn: #f59e0b;
+  --warn-soft: #fdefd0;
+  --danger: #ef4444;
+  --danger-soft: #fde3e3;
+
+  /* Elevation */
+  --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.05);
+  --shadow-md: 0 6px 24px -8px rgba(16, 24, 40, 0.14);
+  --shadow-lg: 0 24px 60px -20px rgba(16, 24, 40, 0.28);
+
+  --r-sm: 10px;
+  --r-md: 16px;
+  --r-lg: 22px;
+  --r-xl: 30px;
+
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body, #root { height: 100%; }
+
+body {
+  font-family: var(--sans);
+  color: var(--ink);
+  background: var(--canvas);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  letter-spacing: -0.01em;
+}
+
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; }
+input, select, textarea { font-family: inherit; }
+
+::selection { background: var(--mint-soft); }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: #dfe3e9; border-radius: 20px; border: 3px solid var(--canvas); }
+::-webkit-scrollbar-thumb:hover { background: #cfd4dc; }
+
+/* ---------- Typography helpers ---------- */
+.h1 { font-size: 30px; font-weight: 800; letter-spacing: -0.03em; }
+.h2 { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; }
+.h3 { font-size: 16px; font-weight: 700; letter-spacing: -0.01em; }
+.eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--slate-400); }
+.muted { color: var(--slate); }
+.tiny { font-size: 12.5px; }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  border: none; border-radius: 999px; font-weight: 600; font-size: 14.5px;
+  padding: 11px 20px; transition: transform .12s ease, background .16s ease, box-shadow .16s ease, color .16s;
+  white-space: nowrap;
+}
+.btn:active { transform: translateY(1px) scale(0.99); }
+.btn-primary { background: var(--ink); color: #fff; }
+.btn-primary:hover { background: #000; box-shadow: var(--shadow-md); }
+.btn-mint { background: var(--mint); color: var(--ink); }
+.btn-mint:hover { background: var(--mint-600); }
+.btn-ghost { background: transparent; color: var(--ink); }
+.btn-ghost:hover { background: var(--line-soft); }
+.btn-outline { background: #fff; color: var(--ink); border: 1.5px solid var(--line); }
+.btn-outline:hover { border-color: var(--ink); }
+.btn-sm { padding: 8px 14px; font-size: 13.5px; }
+.btn-lg { padding: 15px 28px; font-size: 16px; }
+.btn:disabled { opacity: .45; cursor: not-allowed; }
+.btn-icon { padding: 10px; border-radius: 12px; }
+
+/* ---------- Cards ---------- */
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--r-lg); box-shadow: var(--shadow-sm);
+}
+.card-pad { padding: 22px; }
+.card-hover { transition: transform .16s ease, box-shadow .16s ease, border-color .16s; }
+.card-hover:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: #dde1e8; }
+
+/* ---------- Pills / badges ---------- */
+.pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 5px 11px; border-radius: 999px; font-size: 12.5px; font-weight: 600;
+  background: var(--line-soft); color: var(--slate);
+}
+.dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+
+/* ---------- Inputs ---------- */
+.field { display: flex; flex-direction: column; gap: 7px; }
+.label { font-size: 13px; font-weight: 600; color: var(--ink-800); }
+.input, .select, .textarea {
+  width: 100%; background: #fff; border: 1.5px solid var(--line);
+  border-radius: var(--r-sm); padding: 12px 14px; font-size: 14.5px; color: var(--ink);
+  transition: border-color .15s, box-shadow .15s; outline: none;
+}
+.input::placeholder, .textarea::placeholder { color: var(--slate-400); }
+.input:focus, .select:focus, .textarea:focus {
+  border-color: var(--mint-600); box-shadow: 0 0 0 4px var(--mint-tint);
+}
+.textarea { resize: vertical; min-height: 84px; }
+.select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%235b6472' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 38px; }
+
+/* ---------- Modal ---------- */
+.overlay {
+  position: fixed; inset: 0; background: rgba(10, 14, 23, 0.44);
+  backdrop-filter: blur(4px); display: flex; align-items: flex-end; justify-content: center;
+  z-index: 60; padding: 0; animation: fade .18s ease;
+}
+@media (min-width: 720px) { .overlay { align-items: center; padding: 24px; } }
+.modal {
+  background: #fff; width: 100%; max-width: 560px; border-radius: 26px 26px 0 0;
+  box-shadow: var(--shadow-lg); max-height: 92vh; overflow: auto; animation: slideUp .24s cubic-bezier(.2,.8,.2,1);
+}
+@media (min-width: 720px) { .modal { border-radius: var(--r-lg); } }
+.modal-lg { max-width: 720px; }
+
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { transform: translateY(24px); opacity: .6; } to { transform: translateY(0); opacity: 1; } }
+@keyframes pop { from { transform: scale(.96); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+/* ---------- Layout utils ---------- */
+.row { display: flex; align-items: center; }
+.between { display: flex; align-items: center; justify-content: space-between; }
+.gap-6 { gap: 6px; } .gap-8 { gap: 8px; } .gap-10 { gap: 10px; }
+.gap-12 { gap: 12px; } .gap-16 { gap: 16px; } .gap-20 { gap: 20px; } .gap-24 { gap: 24px; }
+.col { display: flex; flex-direction: column; }
+.wrap { flex-wrap: wrap; }
+.grid { display: grid; gap: 18px; }
+.mt-4 { margin-top: 4px; } .mt-8 { margin-top: 8px; } .mt-16 { margin-top: 16px; } .mt-24 { margin-top: 24px; }
+.flex-1 { flex: 1; }
+
+/* Segmented control */
+.seg { display: inline-flex; background: var(--line-soft); border-radius: 999px; padding: 4px; gap: 2px; }
+.seg button { border: none; background: transparent; border-radius: 999px; padding: 8px 16px; font-weight: 600; font-size: 13.5px; color: var(--slate); transition: .15s; }
+.seg button.active { background: #fff; color: var(--ink); box-shadow: var(--shadow-sm); }
+
+/* Empty state */
+.empty { text-align: center; padding: 56px 24px; color: var(--slate); }
+.empty-ico { width: 64px; height: 64px; border-radius: 20px; background: var(--mint-tint); color: var(--mint-700); display: grid; place-items: center; margin: 0 auto 16px; }
+
+/* Progress */
+.bar { height: 8px; border-radius: 999px; background: var(--line-soft); overflow: hidden; }
+.bar > span { display: block; height: 100%; border-radius: 999px; background: var(--mint); transition: width .5s ease; }
+
+/* Table-ish list rows */
+.lrow { display: grid; align-items: center; padding: 14px 18px; border-bottom: 1px solid var(--line-soft); }
+.lrow:last-child { border-bottom: none; }
+
+/* Avatar */
+.avatar { border-radius: 50%; display: grid; place-items: center; font-weight: 700; color: #fff; flex-shrink: 0; }
