@@ -1,10 +1,11 @@
 import { useNavigate } from 'react-router-dom'
 import { Icon } from '../components/icons'
+import { logoUrl } from '../brand'
 
 function Logo() {
   return (
     <div className="row gap-10">
-      <img src="/logo.svg" width={34} height={34} alt="" />
+      <img src={logoUrl} width={34} height={34} alt="" />
       <span style={{ fontWeight: 800, fontSize: 20, letterSpacing: '-0.03em' }}>Turnkey</span>
     </div>
   )

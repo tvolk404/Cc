@@ -3,6 +3,7 @@ import { NavLink, Outlet, useNavigate, useOutletContext } from 'react-router-dom
 import { Icon } from '../../components/icons'
 import { Avatar } from '../../components/ui'
 import { useStore } from '../../store/StoreContext'
+import { logoUrl } from '../../brand'
 import type { Contractor } from '../../types'
 
 const KEY = 'turnkey.provider.id'
@@ -40,7 +41,7 @@ export default function ProviderLayout() {
       <header style={{ background: '#fff', borderBottom: '1px solid var(--line)', position: 'sticky', top: 0, zIndex: 30 }}>
         <div className="between" style={{ maxWidth: 960, margin: '0 auto', padding: '14px 20px' }}>
           <div className="row gap-10">
-            <img src="/logo.svg" width={28} height={28} alt="" />
+            <img src={logoUrl} width={28} height={28} alt="" />
             <div>
               <div style={{ fontWeight: 800, letterSpacing: '-0.02em', fontSize: 15 }}>Turnkey</div>
               <div className="muted" style={{ fontSize: 11 }}>Service workspace</div>

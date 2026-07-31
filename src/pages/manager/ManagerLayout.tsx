@@ -1,6 +1,7 @@
 import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 import { Icon } from '../../components/icons'
 import { useStore } from '../../store/StoreContext'
+import { logoUrl } from '../../brand'
 
 const NAV = [
   { to: '/manager', end: true, label: 'Dashboard', icon: Icon.Grid },
@@ -19,7 +20,7 @@ export default function ManagerLayout() {
       {/* Sidebar (desktop) */}
       <aside className="mgr-sidebar">
         <div className="row gap-10" style={{ padding: '6px 10px 22px' }}>
-          <img src="/logo.svg" width={30} height={30} alt="" />
+          <img src={logoUrl} width={30} height={30} alt="" />
           <div>
             <div style={{ fontWeight: 800, letterSpacing: '-0.02em' }}>Turnkey</div>
             <div className="muted" style={{ fontSize: 11.5 }}>Manager workspace</div>
