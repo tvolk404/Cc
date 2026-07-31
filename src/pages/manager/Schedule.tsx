@@ -81,7 +81,7 @@ export default function Schedule() {
                   const m = CATEGORY_META[t.category]
                   return (
                     <button key={t.id} onClick={() => setEditing(t)} style={{
-                      textAlign: 'left', border: 'none', borderLeft: `3px solid ${m.color}`, background: m.soft,
+                      textAlign: 'left', border: 'none', borderLeft: `3px solid ${m.color}`, background: m.bg,
                       borderRadius: 10, padding: '8px 10px', cursor: 'pointer',
                     }}>
                       <div className="row gap-6" style={{ fontSize: 11.5, fontWeight: 700, color: m.color }}>

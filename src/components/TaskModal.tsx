@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
 import { Modal, Field } from './ui'
+import { Icon } from './icons'
 import { CATEGORY_META } from '../store/data'
 import { useStore } from '../store/StoreContext'
 import { allUnits, todayIso } from '../lib'
@@ -89,14 +90,15 @@ export default function TaskModal({ open, onClose, onSaved, editing, preset }: P
           <div className="row gap-8 wrap">
             {CATEGORIES.map((c) => {
               const m = CATEGORY_META[c]
+              const Ico = Icon[m.icon]
               const on = category === c
               return (
                 <button key={c} onClick={() => setCategory(c)} className="pill" style={{
-                  padding: '9px 14px', fontSize: 13.5, cursor: 'pointer', border: '1.5px solid',
-                  borderColor: on ? m.color : 'var(--line)',
-                  background: on ? m.soft : '#fff', color: on ? m.color : 'var(--slate)', fontWeight: 700,
+                  padding: '9px 14px', fontSize: 13.5, cursor: 'pointer', border: '1px solid',
+                  borderColor: on ? m.color : 'var(--line-strong)',
+                  background: on ? m.bg : 'var(--surface)', color: on ? m.color : 'var(--muted)', fontWeight: 600,
                 }}>
-                  {m.emoji} {m.label}
+                  <Ico size={14} strokeWidth={2} /> {m.label}
                 </button>
               )
             })}

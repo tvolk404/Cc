@@ -91,4 +91,13 @@ export const Icon = {
   Wrench: ({ size, strokeWidth }: IconProps) => (
     <svg {...base(size, strokeWidth)}><path d="M14.7 6.3a4 4 0 0 0 5 5L21 12l-8 8-2-2 5-5-1-1-5 5-2-2 8-8 1.7-.7z"/></svg>
   ),
+  Broom: ({ size, strokeWidth }: IconProps) => (
+    <svg {...base(size, strokeWidth)}><path d="M19 4l-7 7"/><path d="M11.5 9.5l3 3"/><path d="M5 20c-.5-2.5.5-4.5 2.5-6l3 3C9 19 7 20 5 20z"/><path d="M10.5 11l2.5 2.5"/></svg>
+  ),
+  Bed: ({ size, strokeWidth }: IconProps) => (
+    <svg {...base(size, strokeWidth)}><path d="M3 8v11M3 12h18v7M21 19v-4a3 3 0 0 0-3-3H10v4"/><path d="M6.5 12V9.5A1.5 1.5 0 0 1 8 8h.5"/></svg>
+  ),
+  Dots: ({ size, strokeWidth }: IconProps) => (
+    <svg {...base(size, strokeWidth)}><circle cx="12" cy="5" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="12" cy="19" r="1.4"/></svg>
+  ),
 }

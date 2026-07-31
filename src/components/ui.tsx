@@ -56,28 +56,40 @@ export function Field({ label, children, hint }: { label: string; children: Reac
   )
 }
 
+/* ---------- Category icon chip (replaces emoji) ---------- */
+export function CategoryIcon({ category, size = 44 }: { category: ServiceCategory; size?: number }) {
+  const m = CATEGORY_META[category]
+  const Ico = Icon[m.icon]
+  return (
+    <span className="ichip" style={{ width: size, height: size, background: m.bg, color: m.color, borderRadius: size <= 26 ? 8 : 12 }}>
+      <Ico size={Math.round(size * 0.5)} strokeWidth={1.9} />
+    </span>
+  )
+}
+
 /* ---------- Category badge ---------- */
 export function CategoryBadge({ category, size = 'md' }: { category: ServiceCategory; size?: 'sm' | 'md' }) {
   const m = CATEGORY_META[category]
+  const Ico = Icon[m.icon]
   return (
-    <span className="pill" style={{ background: m.soft, color: m.color, fontWeight: 700, fontSize: size === 'sm' ? 11.5 : 12.5 }}>
-      <span>{m.emoji}</span> {m.label}
+    <span className="pill" style={{ background: m.bg, color: m.color, fontWeight: 600, fontSize: size === 'sm' ? 11.5 : 12 }}>
+      <Ico size={13} strokeWidth={2} /> {m.label}
     </span>
   )
 }
 
 /* ---------- Status badge ---------- */
 const STATUS_META: Record<TaskStatus, { label: string; color: string; bg: string }> = {
-  scheduled: { label: 'Scheduled', color: 'var(--slate)', bg: 'var(--line-soft)' },
-  accepted: { label: 'Accepted', color: 'var(--sky)', bg: 'var(--sky-soft)' },
-  in_progress: { label: 'In progress', color: 'var(--mint-700)', bg: 'var(--mint-soft)' },
-  completed: { label: 'Completed', color: 'var(--ok)', bg: 'var(--ok-soft)' },
-  declined: { label: 'Declined', color: 'var(--danger)', bg: 'var(--danger-soft)' },
+  scheduled: { label: 'Scheduled', color: 'var(--st-sched)', bg: 'var(--st-sched-bg)' },
+  accepted: { label: 'Accepted', color: 'var(--st-accept)', bg: 'var(--st-accept-bg)' },
+  in_progress: { label: 'In progress', color: 'var(--st-prog)', bg: 'var(--st-prog-bg)' },
+  completed: { label: 'Completed', color: 'var(--st-done)', bg: 'var(--st-done-bg)' },
+  declined: { label: 'Declined', color: 'var(--st-decl)', bg: 'var(--st-decl-bg)' },
 }
 export function StatusBadge({ status }: { status: TaskStatus }) {
   const m = STATUS_META[status]
   return (
-    <span className="pill" style={{ background: m.bg, color: m.color, fontWeight: 700 }}>
+    <span className="pill" style={{ background: m.bg, color: m.color, fontWeight: 600 }}>
       <span className="dot" style={{ background: m.color }} /> {m.label}
     </span>
   )

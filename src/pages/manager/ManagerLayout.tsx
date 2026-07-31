@@ -16,76 +16,62 @@ export default function ManagerLayout() {
   const { resetDemo } = useStore()
 
   return (
-    <div style={{ display: 'flex', minHeight: '100vh' }}>
-      {/* Sidebar (desktop) */}
+    <div className="mgr-shell">
       <aside className="mgr-sidebar">
-        <div className="row gap-10" style={{ padding: '6px 10px 22px' }}>
+        <div className="mgr-brand">
           <img src={logoUrl} width={30} height={30} alt="" />
-          <div>
-            <div style={{ fontWeight: 800, letterSpacing: '-0.02em' }}>Turnkey</div>
-            <div className="muted" style={{ fontSize: 11.5 }}>Manager workspace</div>
+          <div className="nl-label">
+            <div style={{ fontWeight: 800, letterSpacing: '-0.02em', fontSize: 16 }}>Turnkey</div>
+            <div className="faint" style={{ fontSize: 11 }}>Manager</div>
           </div>
         </div>
 
-        <nav className="col gap-6">
+        <nav className="col gap-4" style={{ marginTop: 8 }}>
           {NAV.map((n) => (
             <NavLink key={n.to} to={n.to} end={n.end}
-              className={({ isActive }) => 'navlink' + (isActive ? ' active' : '')}>
-              <n.icon size={19} /> {n.label}
+              className={({ isActive }) => 'navlink' + (isActive ? ' active' : '')} title={n.label}>
+              <n.icon size={19} /> <span className="nl-label">{n.label}</span>
             </NavLink>
           ))}
         </nav>
 
-        <div style={{ marginTop: 'auto' }} className="col gap-6">
-          <button className="navlink" onClick={resetDemo}>
-            <Icon.Sparkle size={19} /> Reset demo data
+        <div className="mgr-foot col gap-4">
+          <button className="navlink" onClick={resetDemo} title="Reset demo data">
+            <Icon.Sparkle size={19} /> <span className="nl-label">Reset demo</span>
           </button>
-          <button className="navlink" onClick={() => nav('/')}>
-            <Icon.Logout size={19} /> Switch portal
+          <button className="navlink" onClick={() => nav('/')} title="Switch portal">
+            <Icon.Logout size={19} /> <span className="nl-label">Switch portal</span>
           </button>
         </div>
       </aside>
 
-      {/* Main */}
-      <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column' }}>
+      <div className="mgr-main">
         <Outlet />
       </div>
 
-      {/* Bottom nav (mobile) */}
-      <nav className="mobile-nav">
-        {NAV.map((n) => (
-          <NavLink key={n.to} to={n.to} end={n.end}
-            className={({ isActive }) => 'mnav' + (isActive ? ' active' : '')}>
-            <n.icon size={21} />
-            <span>{n.label}</span>
-          </NavLink>
-        ))}
-      </nav>
-
       <style>{`
+        .mgr-shell { display: flex; min-height: 100vh; }
         .mgr-sidebar {
-          width: 248px; flex-shrink: 0; position: sticky; top: 0; height: 100vh;
-          padding: 22px 16px; display: flex; flex-direction: column;
-          background: #fff; border-right: 1px solid var(--line);
+          width: var(--sidebar-w); flex-shrink: 0; position: sticky; top: 0; height: 100vh;
+          padding: 20px 14px; display: flex; flex-direction: column;
+          background: var(--surface); border-right: 1px solid var(--line);
         }
+        .mgr-brand { display: flex; align-items: center; gap: 11px; padding: 6px 10px 16px; }
+        .mgr-main { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+        .mgr-foot { margin-top: auto; padding-top: 12px; border-top: 1px solid var(--line); }
         .navlink {
-          display: flex; align-items: center; gap: 12px; padding: 11px 14px;
-          border-radius: 12px; font-weight: 600; font-size: 14.5px; color: var(--slate);
-          border: none; background: transparent; width: 100%; text-align: left; transition: .14s;
+          display: flex; align-items: center; gap: 13px; padding: 10px 13px;
+          border-radius: 12px; font-weight: 600; font-size: 14.5px; color: var(--muted);
+          border: none; background: transparent; width: 100%; text-align: left; transition: .13s;
         }
-        .navlink:hover { background: var(--line-soft); color: var(--ink); }
+        .navlink:hover { background: rgba(23,22,28,0.05); color: var(--ink); }
         .navlink.active { background: var(--ink); color: #fff; }
-        .mobile-nav { display: none; }
-        @media (max-width: 860px) {
-          .mgr-sidebar { display: none; }
-          .mobile-nav {
-            display: flex; position: fixed; bottom: 0; left: 0; right: 0; z-index: 40;
-            background: rgba(255,255,255,0.92); backdrop-filter: blur(12px);
-            border-top: 1px solid var(--line); padding: 8px 6px calc(8px + env(safe-area-inset-bottom));
-          }
-          .mnav { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px;
-            color: var(--slate-400); font-size: 10.5px; font-weight: 600; padding: 4px; }
-          .mnav.active { color: var(--mint-700); }
+        /* Icon-rail collapse on narrow screens — stays a web app, never a bottom bar */
+        @media (max-width: 980px) {
+          .mgr-sidebar { width: 72px; padding: 16px 12px; align-items: center; }
+          .mgr-brand { padding: 6px 0 14px; justify-content: center; }
+          .nl-label { display: none; }
+          .navlink { justify-content: center; padding: 12px; gap: 0; }
         }
       `}</style>
     </div>

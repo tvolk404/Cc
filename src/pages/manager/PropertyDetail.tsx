@@ -59,7 +59,7 @@ export default function PropertyDetail() {
         </div>
       </div>
 
-      <div className="grid" style={{ gridTemplateColumns: 'minmax(0, 1.5fr) minmax(0, 1fr)' }}>
+      <div className="split">
         {/* Units column */}
         <div className="col gap-16">
           {p.kind === 'single' ? (

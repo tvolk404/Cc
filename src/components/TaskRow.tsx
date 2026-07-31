@@ -1,4 +1,4 @@
-import { CategoryBadge, StatusBadge, Avatar } from './ui'
+import { CategoryIcon, StatusBadge, Avatar } from './ui'
 import { Icon } from './icons'
 import { useStore } from '../store/StoreContext'
 import { taskWhere, relativeDay } from '../lib'
@@ -9,9 +9,7 @@ export function TaskRow({ task, onClick }: { task: Task; onClick?: () => void })
   const contractor = state.contractors.find((c) => c.id === task.contractorId)
   return (
     <div className="lrow taskrow" onClick={onClick} style={{ cursor: onClick ? 'pointer' : 'default', gridTemplateColumns: 'auto 1fr auto' }}>
-      <div style={{ width: 46, height: 46, borderRadius: 13, background: 'var(--line-soft)', display: 'grid', placeItems: 'center', fontSize: 20 }}>
-        {task.category === 'cleaning' ? '🧹' : task.category === 'maintenance' ? '🔧' : task.category === 'linen' ? '🛏️' : task.category === 'inspection' ? '🔍' : '✨'}
-      </div>
+      <CategoryIcon category={task.category} size={46} />
       <div style={{ minWidth: 0 }}>
         <div className="row gap-8" style={{ flexWrap: 'wrap' }}>
           <span className="h3" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{task.title}</span>

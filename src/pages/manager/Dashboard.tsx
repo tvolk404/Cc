@@ -23,7 +23,7 @@ export default function Dashboard() {
   return (
     <Page>
       <PageHeader
-        title="Good day, manager 👋"
+        title="Good day, manager"
         subtitle="Here's what's happening across your portfolio today."
         actions={<button className="btn btn-primary" onClick={() => setModal(true)}><Icon.Plus size={18} /> Schedule task</button>}
       />
@@ -35,7 +35,7 @@ export default function Dashboard() {
         <Stat label="Needs a crew" value={unassigned} sub="unassigned tasks" accent={unassigned ? 'var(--amber)' : undefined} />
       </div>
 
-      <div className="grid" style={{ gridTemplateColumns: 'minmax(0, 1.6fr) minmax(0, 1fr)' }}>
+      <div className="split">
         {/* Today */}
         <div className="card">
           <div className="between" style={{ padding: '20px 22px 12px' }}>

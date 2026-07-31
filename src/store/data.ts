@@ -3,24 +3,27 @@ import type { AppState, ServiceCategory } from '../types'
 export const uid = (p = 'id') =>
   p + '_' + Math.random().toString(36).slice(2, 9) + Date.now().toString(36).slice(-3)
 
+export type CategoryIconKey = 'Broom' | 'Wrench' | 'Bed' | 'Search' | 'Sparkle'
+
 export const CATEGORY_META: Record<
   ServiceCategory,
-  { label: string; color: string; soft: string; emoji: string }
+  { label: string; color: string; bg: string; icon: CategoryIconKey }
 > = {
-  cleaning: { label: 'Cleaning', color: 'var(--sky)', soft: 'var(--sky-soft)', emoji: '🧹' },
-  maintenance: { label: 'Maintenance', color: 'var(--amber)', soft: 'var(--amber-soft)', emoji: '🔧' },
-  linen: { label: 'Linen', color: 'var(--violet)', soft: 'var(--violet-soft)', emoji: '🛏️' },
-  inspection: { label: 'Inspection', color: 'var(--grape)', soft: 'var(--grape-soft)', emoji: '🔍' },
-  custom: { label: 'Custom', color: 'var(--slate)', soft: 'var(--line-soft)', emoji: '✨' },
+  cleaning: { label: 'Cleaning', color: 'var(--c-clean)', bg: 'var(--c-clean-bg)', icon: 'Broom' },
+  maintenance: { label: 'Maintenance', color: 'var(--c-maint)', bg: 'var(--c-maint-bg)', icon: 'Wrench' },
+  linen: { label: 'Linen', color: 'var(--c-linen)', bg: 'var(--c-linen-bg)', icon: 'Bed' },
+  inspection: { label: 'Inspection', color: 'var(--c-inspect)', bg: 'var(--c-inspect-bg)', icon: 'Search' },
+  custom: { label: 'Custom', color: 'var(--c-custom)', bg: 'var(--c-custom-bg)', icon: 'Sparkle' },
 }
 
+/* Muted duotone covers — restrained, editorial (no rainbow gradients). */
 export const GRADIENTS: Record<string, string> = {
-  g1: 'linear-gradient(135deg,#1de9b6,#10c99c)',
-  g2: 'linear-gradient(135deg,#4c8dff,#8b6cff)',
-  g3: 'linear-gradient(135deg,#ffb020,#ff5d73)',
-  g4: 'linear-gradient(135deg,#8b6cff,#d264ff)',
-  g5: 'linear-gradient(135deg,#0a0e17,#3a4152)',
-  g6: 'linear-gradient(135deg,#ff5d73,#ffb020)',
+  g1: 'linear-gradient(160deg,#1f2029,#33343f)',
+  g2: 'linear-gradient(160deg,#12433a,#0f9c84)',
+  g3: 'linear-gradient(160deg,#3a3550,#5563cf)',
+  g4: 'linear-gradient(160deg,#4a3a24,#b9781f)',
+  g5: 'linear-gradient(160deg,#402d4d,#8a4fc4)',
+  g6: 'linear-gradient(160deg,#233b46,#3f7d8f)',
 }
 export const GRADIENT_KEYS = Object.keys(GRADIENTS)
 

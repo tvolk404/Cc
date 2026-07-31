@@ -1,4 +1,4 @@
-import { CategoryBadge, StatusBadge } from '../../components/ui'
+import { CategoryBadge, CategoryIcon, StatusBadge } from '../../components/ui'
 import { Icon } from '../../components/icons'
 import { useStore } from '../../store/StoreContext'
 import { taskWhere, relativeDay } from '../../lib'
@@ -13,9 +13,7 @@ export function JobCard({ task }: { task: Task }) {
     <div className="card card-pad">
       <div className="between wrap gap-12">
         <div className="row gap-12" style={{ minWidth: 0 }}>
-          <div style={{ width: 44, height: 44, borderRadius: 13, background: 'var(--line-soft)', display: 'grid', placeItems: 'center', fontSize: 20, flexShrink: 0 }}>
-            {task.category === 'cleaning' ? '🧹' : task.category === 'maintenance' ? '🔧' : task.category === 'linen' ? '🛏️' : task.category === 'inspection' ? '🔍' : '✨'}
-          </div>
+          <CategoryIcon category={task.category} size={44} />
           <div style={{ minWidth: 0 }}>
             <div className="h3">{task.title}</div>
             <div className="muted tiny row gap-8 mt-4 wrap">

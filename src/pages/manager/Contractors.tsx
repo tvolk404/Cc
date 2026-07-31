@@ -126,13 +126,13 @@ function AddContractorModal({ open, onClose }: { open: boolean; onClose: () => v
         <Field label="Services provided" hint="Tasks in these categories will be matched to this contractor.">
           <div className="row gap-8 wrap">
             {CATEGORIES.map((c) => {
-              const m = CATEGORY_META[c]; const on = cats.includes(c)
+              const m = CATEGORY_META[c]; const Ico = Icon[m.icon]; const on = cats.includes(c)
               return (
                 <button key={c} onClick={() => toggle(c)} className="pill" style={{
-                  padding: '9px 14px', fontSize: 13.5, cursor: 'pointer', border: '1.5px solid',
-                  borderColor: on ? m.color : 'var(--line)', background: on ? m.soft : '#fff',
-                  color: on ? m.color : 'var(--slate)', fontWeight: 700,
-                }}>{m.emoji} {m.label}</button>
+                  padding: '9px 14px', fontSize: 13.5, cursor: 'pointer', border: '1px solid',
+                  borderColor: on ? m.color : 'var(--line-strong)', background: on ? m.bg : 'var(--surface)',
+                  color: on ? m.color : 'var(--muted)', fontWeight: 600,
+                }}><Ico size={14} strokeWidth={2} /> {m.label}</button>
               )
             })}
           </div>

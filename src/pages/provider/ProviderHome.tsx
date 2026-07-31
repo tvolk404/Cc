@@ -24,7 +24,7 @@ export default function ProviderHome() {
           {contractor.name.split(' ').map((w) => w[0]).slice(0, 2).join('')}
         </div>
         <div>
-          <div className="h1" style={{ fontSize: 26 }}>Hi, {contractor.name.split(' ')[0]} 👋</div>
+          <div className="h1" style={{ fontSize: 26 }}>Hi, {contractor.name.split(' ')[0]}</div>
           <div className="muted mt-4">Here are the jobs your team has been dispatched.</div>
         </div>
       </div>
