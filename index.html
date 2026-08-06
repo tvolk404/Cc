@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Brand Appart — a design studio for bold startups. Branding, product design, and conversion-focused websites for funded teams." />
+  <meta name="theme-color" content="#0c0c0d" />
+  <title>Brand Appart — Design studio for bold startups</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- Preloader -->
+  <div class="preloader" id="preloader">
+    <div class="preloader__inner">
+      <span class="preloader__word">Brand</span>
+      <span class="preloader__word">Appart</span>
+    </div>
+    <div class="preloader__count"><span id="preloaderCount">0</span>%</div>
+    <div class="preloader__bar"><span id="preloaderBar"></span></div>
+  </div>
+
+  <!-- Custom cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follow" id="cursorFollow"><span>View</span></div>
+
+  <!-- Progress bar -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <a href="#top" class="brand" data-cursor="hover">
+      <span class="brand__mark"></span>
+      <span class="brand__name">Brand&nbsp;Appart<span class="brand__accent">_</span></span>
+    </a>
+    <nav class="nav" id="nav">
+      <a href="#work" class="nav__link" data-cursor="hover">Work</a>
+      <a href="#services" class="nav__link" data-cursor="hover">Services</a>
+      <a href="#studio" class="nav__link" data-cursor="hover">Studio</a>
+      <a href="#contact" class="nav__link nav__link--cta" data-cursor="hover">Let's talk</a>
+    </nav>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#work" class="mobile-menu__link">Work</a>
+    <a href="#services" class="mobile-menu__link">Services</a>
+    <a href="#studio" class="mobile-menu__link">Studio</a>
+    <a href="#contact" class="mobile-menu__link">Let's talk</a>
+    <div class="mobile-menu__foot">
+      <a href="mailto:hello@brandappart.com">hello@brandappart.com</a>
+      <span>Paris — Remote</span>
+    </div>
+  </div>
+
+  <main id="top">
+    <!-- Hero -->
+    <section class="hero" id="hero">
+      <div class="hero__grid" aria-hidden="true"></div>
+      <div class="hero__inner">
+        <p class="hero__eyebrow reveal">
+          <span class="dot"></span> Design studio — Paris &amp; remote
+        </p>
+        <h1 class="hero__title">
+          <span class="line"><span class="line__in">Design studio</span></span>
+          <span class="line"><span class="line__in">for <em>bold</em></span></span>
+          <span class="line"><span class="line__in">startups.</span></span>
+        </h1>
+        <div class="hero__foot">
+          <p class="hero__lead reveal">
+            We build brands, product experiences and conversion-focused
+            websites for funded teams who refuse to blend in.
+          </p>
+          <a href="#work" class="btn btn--big magnetic" data-cursor="hover">
+            <span>See our work</span>
+            <svg viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="hero__scroll">
+        <span>Scroll</span>
+        <span class="hero__scroll-line"></span>
+      </div>
+    </section>
+
+    <!-- Marquee / trusted -->
+    <section class="marquee-wrap" aria-label="Clients">
+      <div class="marquee">
+        <div class="marquee__track">
+          <span>Fintech</span><span class="star">✦</span>
+          <span>SaaS</span><span class="star">✦</span>
+          <span>AI &amp; ML</span><span class="star">✦</span>
+          <span>Climate</span><span class="star">✦</span>
+          <span>Health</span><span class="star">✦</span>
+          <span>Web3</span><span class="star">✦</span>
+          <span>Mobility</span><span class="star">✦</span>
+          <span>Fintech</span><span class="star">✦</span>
+          <span>SaaS</span><span class="star">✦</span>
+          <span>AI &amp; ML</span><span class="star">✦</span>
+          <span>Climate</span><span class="star">✦</span>
+          <span>Health</span><span class="star">✦</span>
+          <span>Web3</span><span class="star">✦</span>
+          <span>Mobility</span><span class="star">✦</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Intro statement -->
+    <section class="intro" id="studio">
+      <div class="intro__inner">
+        <p class="intro__label reveal">(What we do)</p>
+        <h2 class="intro__text">
+          <span class="word">We&nbsp;</span><span class="word">turn&nbsp;</span><span class="word">ambitious&nbsp;</span><span class="word">ideas&nbsp;</span><span class="word">into&nbsp;</span><span class="word">brands&nbsp;</span><span class="word">people&nbsp;</span><span class="word">remember&nbsp;</span><span class="word">—&nbsp;</span><span class="word">and&nbsp;</span><span class="word">products&nbsp;</span><span class="word">they&nbsp;</span><span class="word">can't&nbsp;</span><span class="word">put&nbsp;</span><span class="word">down.</span>
+        </h2>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services" id="services">
+      <div class="section-head">
+        <p class="section-head__label reveal">(Services)</p>
+        <h2 class="section-head__title reveal">What we're good at</h2>
+      </div>
+      <div class="services__list">
+        <article class="service reveal">
+          <span class="service__num">01</span>
+          <div class="service__body">
+            <h3 class="service__title">Brand Strategy</h3>
+            <p class="service__desc">Positioning, narrative and tone of voice. We find the sharp angle that makes you impossible to ignore.</p>
+          </div>
+          <ul class="service__tags">
+            <li>Positioning</li><li>Naming</li><li>Messaging</li><li>Research</li>
+          </ul>
+        </article>
+        <article class="service reveal">
+          <span class="service__num">02</span>
+          <div class="service__body">
+            <h3 class="service__title">Visual Identity</h3>
+            <p class="service__desc">Logos, type systems and design languages built to scale — with guidelines your whole team can actually use.</p>
+          </div>
+          <ul class="service__tags">
+            <li>Logo</li><li>Type</li><li>Guidelines</li><li>Social kit</li>
+          </ul>
+        </article>
+        <article class="service reveal">
+          <span class="service__num">03</span>
+          <div class="service__body">
+            <h3 class="service__title">Product Design</h3>
+            <p class="service__desc">UX and UI for apps and dashboards. Interfaces that feel effortless and convert on the first try.</p>
+          </div>
+          <ul class="service__tags">
+            <li>UX</li><li>UI</li><li>Prototyping</li><li>Design systems</li>
+          </ul>
+        </article>
+        <article class="service reveal">
+          <span class="service__num">04</span>
+          <div class="service__body">
+            <h3 class="service__title">Web Design &amp; Build</h3>
+            <p class="service__desc">High-impact marketing sites — designed, animated and shipped. Fast, responsive, conversion-focused.</p>
+          </div>
+          <ul class="service__tags">
+            <li>Design</li><li>Webflow</li><li>Motion</li><li>SEO</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Work -->
+    <section class="work" id="work">
+      <div class="section-head">
+        <p class="section-head__label reveal">(Selected work)</p>
+        <h2 class="section-head__title reveal">Recent projects</h2>
+      </div>
+      <div class="work__grid">
+        <a href="#contact" class="project project--tall" data-cursor="view" style="--c1:#1c3f8f;--c2:#7db0ff">
+          <div class="project__media"><div class="project__visual project__visual--nova"></div></div>
+          <div class="project__meta">
+            <h3>Nova Pay</h3>
+            <span>Fintech — Branding, Product</span>
+          </div>
+          <span class="project__year">'25</span>
+        </a>
+        <a href="#contact" class="project" data-cursor="view" style="--c1:#0f5c46;--c2:#6ee7b7">
+          <div class="project__media"><div class="project__visual project__visual--verde"></div></div>
+          <div class="project__meta">
+            <h3>Verde</h3>
+            <span>Climate — Identity, Web</span>
+          </div>
+          <span class="project__year">'25</span>
+        </a>
+        <a href="#contact" class="project" data-cursor="view" style="--c1:#5a1f8f;--c2:#d8b4fe">
+          <div class="project__media"><div class="project__visual project__visual--halo"></div></div>
+          <div class="project__meta">
+            <h3>Halo AI</h3>
+            <span>AI — Brand, Product Design</span>
+          </div>
+          <span class="project__year">'24</span>
+        </a>
+        <a href="#contact" class="project project--tall" data-cursor="view" style="--c1:#8f3a1f;--c2:#ffb27d">
+          <div class="project__media"><div class="project__visual project__visual--ember"></div></div>
+          <div class="project__meta">
+            <h3>Ember</h3>
+            <span>Mobility — Strategy, Web</span>
+          </div>
+          <span class="project__year">'24</span>
+        </a>
+      </div>
+      <a href="#contact" class="work__all magnetic" data-cursor="hover"><span>View all projects</span></a>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats">
+      <div class="stat reveal">
+        <span class="stat__num" data-count="60">0</span><span class="stat__plus">+</span>
+        <p class="stat__label">Brands shipped</p>
+      </div>
+      <div class="stat reveal">
+        <span class="stat__num" data-count="12">0</span>
+        <p class="stat__label">Awwwards &amp; mentions</p>
+      </div>
+      <div class="stat reveal">
+        <span class="stat__num" data-count="6">0</span>
+        <p class="stat__label">Years in the game</p>
+      </div>
+      <div class="stat reveal">
+        <span class="stat__num" data-count="98">0</span><span class="stat__plus">%</span>
+        <p class="stat__label">Would refer us</p>
+      </div>
+    </section>
+
+    <!-- Approach -->
+    <section class="approach">
+      <div class="section-head">
+        <p class="section-head__label reveal">(How we work)</p>
+        <h2 class="section-head__title reveal">A tight process, no fluff</h2>
+      </div>
+      <div class="approach__steps">
+        <div class="step reveal">
+          <span class="step__num">01 — Discover</span>
+          <p>We dig into your market, users and ambition. One workshop, zero guesswork.</p>
+        </div>
+        <div class="step reveal">
+          <span class="step__num">02 — Define</span>
+          <p>Strategy and direction locked. You know exactly where we're headed before a pixel moves.</p>
+        </div>
+        <div class="step reveal">
+          <span class="step__num">03 — Design</span>
+          <p>Brand and product crafted in tight loops. Real feedback, fast iterations.</p>
+        </div>
+        <div class="step reveal">
+          <span class="step__num">04 — Deliver</span>
+          <p>Shipped, documented and handed off — with everything your team needs to run.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonial -->
+    <section class="testimonial">
+      <div class="testimonial__inner">
+        <p class="testimonial__label reveal">(Kind words)</p>
+        <blockquote class="testimonial__quote">
+          <span class="word">"They&nbsp;</span><span class="word">didn't&nbsp;</span><span class="word">just&nbsp;</span><span class="word">design&nbsp;</span><span class="word">a&nbsp;</span><span class="word">brand&nbsp;</span><span class="word">—&nbsp;</span><span class="word">they&nbsp;</span><span class="word">gave&nbsp;</span><span class="word">us&nbsp;</span><span class="word">a&nbsp;</span><span class="word">reason&nbsp;</span><span class="word">to&nbsp;</span><span class="word">be&nbsp;</span><span class="word">bold."</span>
+        </blockquote>
+        <div class="testimonial__by reveal">
+          <span class="testimonial__avatar"></span>
+          <div>
+            <strong>Léa Moreau</strong>
+            <span>CEO &amp; Co-founder, Nova Pay</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA / Contact -->
+    <section class="cta" id="contact">
+      <div class="cta__inner">
+        <p class="cta__label reveal">(Let's talk)</p>
+        <h2 class="cta__title">
+          <span class="line"><span class="line__in">Got something</span></span>
+          <span class="line"><span class="line__in">bold in mind?</span></span>
+        </h2>
+        <a href="mailto:hello@brandappart.com" class="cta__mail magnetic" data-cursor="hover">
+          hello@brandappart.com
+        </a>
+        <div class="cta__socials reveal">
+          <a href="#" data-cursor="hover">Instagram</a>
+          <a href="#" data-cursor="hover">LinkedIn</a>
+          <a href="#" data-cursor="hover">Twitter / X</a>
+          <a href="#" data-cursor="hover">Awwwards</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__big" aria-hidden="true">
+      <span>Brand&nbsp;Appart_</span>
+    </div>
+    <div class="footer__row">
+      <div class="footer__col">
+        <span class="footer__label">Studio</span>
+        <p>Paris, France<br />Working worldwide, remote-first.</p>
+      </div>
+      <div class="footer__col">
+        <span class="footer__label">Say hi</span>
+        <p>
+          <a href="mailto:hello@brandappart.com" data-cursor="hover">hello@brandappart.com</a><br />
+          <a href="tel:+33100000000" data-cursor="hover">+33 1 00 00 00 00</a>
+        </p>
+      </div>
+      <div class="footer__col">
+        <span class="footer__label">Sitemap</span>
+        <p>
+          <a href="#work" data-cursor="hover">Work</a> ·
+          <a href="#services" data-cursor="hover">Services</a> ·
+          <a href="#studio" data-cursor="hover">Studio</a> ·
+          <a href="#contact" data-cursor="hover">Contact</a>
+        </p>
+      </div>
+    </div>
+    <div class="footer__base">
+      <span>© <span id="year">2026</span> Brand Appart. All rights reserved.</span>
+      <button class="footer__top magnetic" data-cursor="hover" id="backTop">Back to top ↑</button>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
