@@ -414,15 +414,17 @@ function Kpi({
 }
 
 function Ring({ pct }: { pct: number }) {
-  const r = 34;
+  const size = 104;
+  const cxy = size / 2;
+  const r = 44;
   const c = 2 * Math.PI * r;
   const off = c * (1 - pct / 100);
   return (
-    <svg width="86" height="86" viewBox="0 0 86 86" className="ring">
-      <circle cx="43" cy="43" r={r} fill="none" stroke="var(--bg-2)" strokeWidth="9" />
+    <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} className="ring">
+      <circle cx={cxy} cy={cxy} r={r} fill="none" stroke="var(--bg-2)" strokeWidth="9" />
       <circle
-        cx="43"
-        cy="43"
+        cx={cxy}
+        cy={cxy}
         r={r}
         fill="none"
         stroke="url(#ringg)"
@@ -430,7 +432,7 @@ function Ring({ pct }: { pct: number }) {
         strokeLinecap="round"
         strokeDasharray={c}
         strokeDashoffset={off}
-        transform="rotate(-90 43 43)"
+        transform={`rotate(-90 ${cxy} ${cxy})`}
       />
       <defs>
         <linearGradient id="ringg" x1="0" y1="0" x2="1" y2="1">
