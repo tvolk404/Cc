@@ -1,0 +1,697 @@
+<title>Skead Dashboard</title>
+<style>
+  /* ============================================================
+     Skead — Design style recreation
+     Neumorphic light UI · lime-green accents · rounded cards
+     ============================================================ */
+
+  :root {
+    /* Surfaces */
+    --bg:            #e9eaec;
+    --bg-2:          #eef0f2;
+    --card:          #ffffff;
+    --card-soft:     #f4f5f7;
+    --ink:           #17181c;
+    --ink-2:         #6b6f76;
+    --ink-3:         #a2a6ad;
+
+    /* Brand */
+    --lime:          #c8f532;
+    --lime-deep:     #b6e81f;
+    --green:         #34d15b;
+    --green-bright:  #57e06a;
+    --navy:          #14152a;
+    --navy-2:        #1c1d38;
+    --blue:          #3b82f6;
+    --orange:        #f97316;
+
+    /* Effects */
+    --radius:        26px;
+    --radius-sm:     16px;
+    --shadow:        0 18px 40px -22px rgba(20,21,42,.28);
+    --shadow-soft:   6px 6px 16px rgba(180,184,192,.55), -6px -6px 16px rgba(255,255,255,.9);
+    --font: "Poppins", "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--ink);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    padding: 26px 34px 40px;
+  }
+
+  /* ---------- Top bar ---------- */
+  .topbar {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+    margin-bottom: 30px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 26px;
+    letter-spacing: -.5px;
+    flex-shrink: 0;
+    width: 180px;
+  }
+  .logo .mark {
+    width: 34px; height: 34px;
+    background: var(--navy);
+    border-radius: 10px;
+    display: grid; place-items: center;
+    color: #fff;
+  }
+  .logo .mark svg { width: 18px; height: 18px; }
+
+  .header-pill {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background: var(--navy);
+    border-radius: 999px;
+    padding: 8px;
+    gap: 4px;
+    height: 66px;
+    box-shadow: var(--shadow);
+  }
+
+  .greet {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 22px 0 16px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 17px;
+    white-space: nowrap;
+  }
+  .greet .cal {
+    display: flex; align-items: center; gap: 8px;
+    color: #b9bcd0; font-weight: 500; font-size: 14px;
+    padding-left: 16px; border-left: 1px solid rgba(255,255,255,.12);
+  }
+  .greet .cal .ic {
+    width: 30px; height: 30px; border-radius: 9px;
+    background: rgba(255,255,255,.08); display: grid; place-items: center;
+  }
+
+  .timeline-strip {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--lime);
+    border-radius: 999px;
+    height: 50px;
+    padding: 0 16px;
+    position: relative;
+    overflow: hidden;
+  }
+  .timeline-strip .slot {
+    display: flex; align-items: center; gap: 8px;
+    font-weight: 600; font-size: 14px; color: var(--navy);
+    white-space: nowrap;
+  }
+  .timeline-strip .divider { flex: 1; height: 2px; position: relative; }
+  .timeline-strip .divider::before {
+    content: ""; position: absolute; inset: 0; top: 50%;
+    border-top: 2px dashed rgba(20,21,42,.3);
+  }
+  .timeline-strip .pin {
+    position: absolute; left: 50%; top: 0; transform: translateX(-50%);
+    background: var(--navy); color: #fff; font-size: 10px; font-weight: 600;
+    padding: 2px 7px; border-radius: 0 0 8px 8px;
+  }
+  .strip-icon {
+    width: 34px; height: 34px; border-radius: 10px;
+    background: var(--navy); color: #fff;
+    display: grid; place-items: center; flex-shrink: 0;
+  }
+  .strip-icon.arrow { background: rgba(20,21,42,.9); }
+
+  .top-actions { display: flex; align-items: center; gap: 8px; padding: 0 6px 0 10px; }
+  .bell {
+    width: 46px; height: 46px; border-radius: 14px;
+    background: rgba(255,255,255,.08); color: #fff;
+    display: grid; place-items: center; position: relative; cursor: pointer;
+  }
+  .bell::after {
+    content: ""; position: absolute; top: 12px; right: 13px;
+    width: 8px; height: 8px; background: #ff5a5f; border-radius: 50%;
+    border: 2px solid var(--navy);
+  }
+  .top-avatar {
+    width: 46px; height: 46px; border-radius: 14px;
+    background: linear-gradient(135deg,#ffcf8b,#f79b6b);
+    display: grid; place-items: center; font-size: 24px;
+    box-shadow: inset 0 0 0 2px rgba(255,255,255,.25);
+  }
+
+  /* ---------- Layout ---------- */
+  .layout { display: flex; gap: 26px; }
+
+  /* ---------- Sidebar ---------- */
+  .sidebar { width: 74px; flex-shrink: 0; display: flex; flex-direction: column; gap: 18px; }
+
+  .nav {
+    background: #e3ecc0;
+    border-radius: 24px;
+    padding: 10px;
+    display: flex; flex-direction: column; align-items: center; gap: 10px;
+  }
+  .nav .item {
+    width: 52px; height: 52px; border-radius: 15px;
+    display: grid; place-items: center; color: #7c8a5b; cursor: pointer;
+    transition: .2s;
+  }
+  .nav .item:hover { background: rgba(255,255,255,.5); color: var(--navy); }
+  .nav .item.active { background: var(--navy); color: #fff; box-shadow: 0 10px 20px -8px rgba(20,21,42,.6); }
+
+  .avatar-rail {
+    background: #eef0e6;
+    border-radius: 24px;
+    padding: 12px 10px;
+    display: flex; flex-direction: column; align-items: center; gap: 10px;
+    overflow: hidden;
+    max-height: 560px;
+  }
+  .avatar-rail .av {
+    width: 44px; height: 44px; border-radius: 13px;
+    display: grid; place-items: center; font-size: 22px; flex-shrink: 0;
+    box-shadow: inset 0 0 0 2px rgba(255,255,255,.3);
+  }
+
+  /* ---------- Main ---------- */
+  .main { flex: 1; min-width: 0; }
+
+  .main-head {
+    display: flex; align-items: center; gap: 16px; margin-bottom: 24px; flex-wrap: wrap;
+  }
+  .main-head h1 { font-size: 26px; font-weight: 700; letter-spacing: -.5px; margin-right: 4px; }
+
+  .search {
+    display: flex; align-items: center; gap: 10px;
+    background: var(--card); border-radius: 999px;
+    padding: 11px 20px; color: var(--ink-3); min-width: 230px;
+    box-shadow: var(--shadow-soft);
+  }
+  .search input { border: none; background: none; outline: none; font: inherit; font-size: 14px; color: var(--ink); width: 100%; }
+
+  .chips { display: flex; align-items: center; gap: 9px; flex: 1; flex-wrap: wrap; }
+  .chip {
+    padding: 10px 20px; border-radius: 999px; font-size: 14px; font-weight: 500;
+    color: var(--ink-3); border: 1.5px solid #d9dbe0; cursor: pointer; transition: .2s;
+    white-space: nowrap;
+  }
+  .chip:hover { color: var(--ink); border-color: #bfc2c8; }
+  .chip.active { background: var(--card); color: var(--ink); border-color: transparent; box-shadow: var(--shadow-soft); }
+
+  .add-task {
+    display: flex; align-items: center; gap: 10px;
+    background: var(--navy); color: #fff; border: none; cursor: pointer;
+    padding: 13px 20px; border-radius: 16px; font: inherit; font-weight: 600; font-size: 14px;
+    box-shadow: 0 14px 26px -12px rgba(20,21,42,.7);
+  }
+  .add-task .plus {
+    width: 24px; height: 24px; border-radius: 50%;
+    background: var(--lime); color: var(--navy); display: grid; place-items: center;
+  }
+
+  /* ---------- Grid ---------- */
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.35fr;
+    gap: 22px;
+  }
+
+  .card {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 26px;
+    box-shadow: var(--shadow);
+    position: relative;
+  }
+
+  .card .expand {
+    position: absolute; top: 20px; right: 20px;
+    width: 42px; height: 42px; border-radius: 50%;
+    background: var(--bg-2); color: var(--navy);
+    display: grid; place-items: center; cursor: pointer;
+    box-shadow: 3px 3px 8px rgba(180,184,192,.5), -3px -3px 8px #fff;
+  }
+
+  .card h3 { font-size: 20px; font-weight: 600; margin-bottom: 22px; }
+
+  .stat { display: flex; align-items: baseline; gap: 10px; margin-bottom: 26px; }
+  .stat .num { font-size: 52px; font-weight: 700; line-height: 1; letter-spacing: -1px; }
+  .stat .lbl { font-size: 15px; color: var(--ink-2); }
+
+  .avatars { display: flex; align-items: center; }
+  .avatars .a {
+    width: 38px; height: 38px; border-radius: 11px; margin-left: -8px;
+    display: grid; place-items: center; font-size: 19px;
+    border: 3px solid var(--card);
+    box-shadow: inset 0 0 0 2px rgba(255,255,255,.3);
+  }
+  .avatars .a:first-child { margin-left: 0; }
+
+  /* Meetup legend */
+  .legend { display: flex; gap: 22px; }
+  .legend .l { font-size: 13px; color: var(--ink-2); }
+  .legend .l::before {
+    content: ""; display: block; width: 42px; height: 5px; border-radius: 3px; margin-bottom: 8px;
+  }
+  .legend .l.p::before { background: var(--orange); }
+  .legend .l.c::before { background: var(--blue); }
+  .legend .l.r::before { background: var(--green); }
+
+  /* Schedule card */
+  .schedule { grid-row: span 2; padding: 26px 26px 30px; }
+  .schedule .sub { font-size: 13px; color: var(--ink-3); margin-top: -16px; margin-bottom: 20px; }
+  .sched-avs { position: absolute; top: 22px; right: 24px; display: flex; }
+  .sched-avs .a { width: 26px; height: 26px; border-radius: 8px; margin-left: -6px; border: 2px solid var(--card); display: grid; place-items: center; font-size: 13px; }
+  .sched-avs .add-mini { width: 26px; height: 26px; border-radius: 8px; background: var(--navy); color:#fff; display: grid; place-items:center; margin-left: -6px; border: 2px solid var(--card); }
+
+  .timeline { position: relative; padding: 10px 0; }
+  .timeline .axis { position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: linear-gradient(var(--ink-3), transparent); transform: translateX(-50%); }
+  .timeline .axis .now { position: absolute; top: 0; left: 50%; transform: translateX(-50%); background: var(--navy); color:#fff; font-size:10px; font-weight:600; padding:2px 6px; border-radius: 6px; }
+  .t-row { display: flex; align-items: center; min-height: 62px; position: relative; }
+  .t-row .dots { position: absolute; left: 0; right: 0; top: 50%; border-top: 2px dotted #dfe1e5; }
+  .t-item {
+    display: flex; align-items: center; gap: 8px; z-index: 1;
+    background: var(--card-soft); border-radius: 12px; padding: 7px 10px;
+    font-size: 13px; font-weight: 500; box-shadow: var(--shadow-soft);
+  }
+  .t-item .mini-avs { display: flex; }
+  .t-item .mini-avs .a { width: 22px; height: 22px; border-radius: 7px; margin-left: -5px; border: 2px solid var(--card-soft); display: grid; place-items: center; font-size: 11px; }
+  .t-item .mini-avs .a:first-child { margin-left: 0; }
+  .t-item.hl { background: var(--lime); box-shadow: 0 8px 18px -8px var(--lime-deep); }
+  .t-item .go { width: 28px; height: 28px; border-radius: 8px; background: var(--card); display: grid; place-items: center; margin-left: 4px; }
+  .t-item.icon-item .app { width: 26px; height: 26px; border-radius: 7px; background: var(--blue); color:#fff; display:grid; place-items:center; }
+  .t-left { margin-right: auto; }
+  .t-right { margin-left: auto; }
+
+  /* Progress card */
+  .progress-wrap { display: flex; flex-direction: column; align-items: center; }
+  .gauge { position: relative; width: 220px; height: 220px; margin: 6px 0 4px; }
+  .gauge svg { transform: rotate(-90deg); }
+  .gauge .center { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; }
+  .gauge .center .pct { font-size: 34px; font-weight: 700; line-height: 1; }
+  .gauge .center .cap { font-size: 12px; color: var(--ink-3); }
+  .goal { font-size: 20px; font-weight: 600; margin: 12px 0 18px; }
+  .goal b { color: var(--green); }
+  .prog-legend { display: flex; gap: 26px; }
+  .prog-legend .pl { font-size: 13px; color: var(--ink-2); display: flex; flex-direction: column; gap: 8px; }
+  .prog-legend .pl::before { content:""; width: 34px; height: 6px; border-radius: 4px; }
+  .prog-legend .done::before { background: var(--green); }
+  .prog-legend .inprog::before { background: var(--lime); }
+  .prog-legend .wait::before { background: var(--navy); }
+  .card .link { font-size: 12px; color: var(--blue); margin-top: -14px; margin-bottom: 16px; display: inline-block; }
+
+  /* Last week card */
+  .week-list { display: flex; flex-direction: column; gap: 18px; }
+  .week-item { display: flex; align-items: center; gap: 16px; }
+  .week-item .ico {
+    width: 54px; height: 54px; border-radius: 16px; background: var(--card-soft);
+    display: grid; place-items: center; box-shadow: var(--shadow-soft); flex-shrink: 0;
+  }
+  .week-item .meta { flex: 1; }
+  .week-item .meta .t { font-size: 16px; font-weight: 600; }
+  .week-item .meta .s { font-size: 12px; color: var(--ink-3); margin-top: 3px; }
+  .week-item .tag {
+    width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center;
+    font-size: 13px; font-weight: 600; color: var(--navy);
+  }
+  .tag.tr { background: #cfe4ff; }
+  .tag.gh { background: #d3f6d8; }
+  .tag.pk { background: #ffd6d6; }
+
+  /* Audit card (dark) */
+  .audit {
+    background: radial-gradient(120% 120% at 50% 0%, #2a2c55 0%, #141428 55%, #0c0c1a 100%);
+    color: #fff; display: flex; flex-direction: column; align-items: center;
+    text-align: center; padding: 30px 26px;
+  }
+  .audit .close { position: absolute; top: 18px; right: 18px; width: 30px; height: 30px; border-radius: 50%; background: rgba(255,255,255,.1); display: grid; place-items: center; cursor: pointer; }
+  .audit h3 { font-size: 30px; font-weight: 700; line-height: 1.15; margin: 8px 0 22px; }
+  .audit .glow {
+    width: 128px; height: 128px; border-radius: 30px;
+    background: linear-gradient(135deg,#ffcf8b,#f79b6b);
+    display: grid; place-items: center; font-size: 62px;
+    box-shadow: 0 0 0 4px rgba(200,245,50,.9), 0 0 42px 6px rgba(200,245,50,.55);
+    margin-bottom: 16px;
+  }
+  .audit .name { font-size: 17px; font-weight: 500; margin-bottom: 22px; }
+  .audit .call {
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+    background: var(--lime); color: var(--navy); font-weight: 600; font-size: 15px;
+    width: 100%; padding: 15px; border-radius: 16px; cursor: pointer;
+  }
+  .audit .call .vic { width: 30px; height: 30px; border-radius: 9px; background: var(--navy); color:#fff; display: grid; place-items:center; }
+
+  .col { display: flex; flex-direction: column; gap: 22px; }
+
+  @media (max-width: 1150px) {
+    .grid { grid-template-columns: 1fr 1fr; }
+    .schedule { grid-row: auto; grid-column: span 2; }
+  }
+  @media (max-width: 760px) {
+    body { padding: 16px; }
+    .grid, .col { grid-template-columns: 1fr; }
+    .schedule { grid-column: auto; }
+    .header-pill { display: none; }
+    .sidebar { display: none; }
+  }
+</style>
+
+
+  <!-- ================= TOP BAR ================= -->
+  <header class="topbar">
+    <div class="logo">
+      <span class="mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V6a2 2 0 0 1 2-2h9l5 5v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M8 4v6M12 14h4"/></svg>
+      </span>
+      Skead
+    </div>
+
+    <div class="header-pill">
+      <div class="greet">
+        Hey Osaze 💯
+        <span class="cal">
+          <span class="ic">
+            <svg viewBox="0 0 24 24" width="15" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>
+          </span>
+          Feb 24
+        </span>
+      </div>
+
+      <div class="timeline-strip">
+        <div class="slot">
+          <span class="mini-avs" style="display:flex">
+            <span style="width:26px;height:26px;border-radius:8px;background:#ffd18b;display:grid;place-items:center;font-size:13px">🧑</span>
+            <span style="width:26px;height:26px;border-radius:8px;background:#b8e0ff;margin-left:-6px;display:grid;place-items:center;font-size:13px;border:2px solid var(--lime)">👩</span>
+            <span style="width:26px;height:26px;border-radius:8px;background:#c9c2ff;margin-left:-6px;display:grid;place-items:center;font-size:13px;border:2px solid var(--lime)">🧑</span>
+          </span>
+          86 days
+        </div>
+        <span class="strip-icon arrow">
+          <svg viewBox="0 0 24 24" width="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M9 7h8v8"/></svg>
+        </span>
+        <div class="slot">13:00</div>
+        <div class="divider"><span class="pin">17:59</span></div>
+        <div class="slot">
+          <span class="mini-avs" style="display:flex">
+            <span style="width:26px;height:26px;border-radius:8px;background:#ffd18b;display:grid;place-items:center;font-size:13px">🧑</span>
+            <span style="width:26px;height:26px;border-radius:8px;background:#ffc2c2;margin-left:-6px;display:grid;place-items:center;font-size:13px;border:2px solid var(--lime)">👨</span>
+            <span style="width:26px;height:26px;border-radius:8px;background:#c9c2ff;margin-left:-6px;display:grid;place-items:center;font-size:13px;border:2px solid var(--lime)">🧑</span>
+          </span>
+        </div>
+        <span class="strip-icon">
+          <svg viewBox="0 0 24 24" width="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 10l5-3v10l-5-3v-4zM3 6h12v12H3z"/></svg>
+        </span>
+        <div class="slot">21:00</div>
+        <div class="slot">
+          <span class="mini-avs" style="display:flex">
+            <span style="width:26px;height:26px;border-radius:8px;background:#ffd18b;display:grid;place-items:center;font-size:13px">🧑</span>
+            <span style="width:26px;height:26px;border-radius:8px;background:#b8e0ff;margin-left:-6px;display:grid;place-items:center;font-size:13px;border:2px solid var(--lime)">👩</span>
+            <span style="width:26px;height:26px;border-radius:8px;background:#d3f6d8;margin-left:-6px;display:grid;place-items:center;font-size:13px;border:2px solid var(--lime)">🧑</span>
+            <span style="width:26px;height:26px;border-radius:8px;background:#c9c2ff;margin-left:-6px;display:grid;place-items:center;font-size:13px;border:2px solid var(--lime)">👨</span>
+          </span>
+        </div>
+      </div>
+
+      <div class="top-actions">
+        <div class="bell">
+          <svg viewBox="0 0 24 24" width="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+        </div>
+        <div class="top-avatar">🧑🏾</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= LAYOUT ================= -->
+  <div class="layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <nav class="nav">
+        <div class="item active">
+          <svg viewBox="0 0 24 24" width="22" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><path d="M17 14v6M14 17h6"/></svg>
+        </div>
+        <div class="item">
+          <svg viewBox="0 0 24 24" width="22" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>
+        </div>
+        <div class="item">
+          <svg viewBox="0 0 24 24" width="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v12H8l-4 4z"/></svg>
+        </div>
+        <div class="item">
+          <svg viewBox="0 0 24 24" width="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <div class="item">
+          <svg viewBox="0 0 24 24" width="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </div>
+      </nav>
+
+      <div class="avatar-rail">
+        <div class="av" style="background:#ffd7b0">🧑🏽</div>
+        <div class="av" style="background:#c9c2ff">🧔🏻</div>
+        <div class="av" style="background:#bfe3c0">🧑🏻</div>
+        <div class="av" style="background:#cfe4ff">👨🏽</div>
+        <div class="av" style="background:#e6c7a8">🧑🏾</div>
+        <div class="av" style="background:#f6d6a8">👩🏻</div>
+        <div class="av" style="background:#ffd7b0">🧑🏼</div>
+        <div class="av" style="background:#d9c3a0">🧔🏽</div>
+        <div class="av" style="background:#ffe0b0">👨🏻</div>
+        <div class="av" style="background:#c8dcc0">🧑🏿</div>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="main">
+      <div class="main-head">
+        <h1>Upcoming Tasks</h1>
+        <div class="search">
+          <svg viewBox="0 0 24 24" width="17" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+          <input placeholder="Search" />
+        </div>
+        <div class="chips">
+          <span class="chip active">All</span>
+          <span class="chip">Urgent</span>
+          <span class="chip">Important</span>
+          <span class="chip">Fun</span>
+          <span class="chip">Study</span>
+          <span class="chip">Adventure</span>
+        </div>
+        <button class="add-task">
+          Add Task
+          <span class="plus">
+            <svg viewBox="0 0 24 24" width="14" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 5v14M5 12h14"/></svg>
+          </span>
+        </button>
+      </div>
+
+      <div class="grid">
+
+        <!-- Pukas Dialogue -->
+        <div class="card">
+          <div class="expand"><svg viewBox="0 0 24 24" width="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M9 7h8v8"/></svg></div>
+          <h3>Pukas Dialogue</h3>
+          <div class="stat"><span class="num">9</span><span class="lbl">members</span></div>
+          <div class="avatars">
+            <span class="a" style="background:#ffd7b0">🧑🏽</span>
+            <span class="a" style="background:#cfe4ff">👨🏻</span>
+            <span class="a" style="background:#c9c2ff">🧔🏻</span>
+            <span class="a" style="background:#f6d6a8">👩🏻</span>
+            <span class="a" style="background:#bfe3c0">🧑🏾</span>
+          </div>
+        </div>
+
+        <!-- Meetup -->
+        <div class="card">
+          <div class="expand"><svg viewBox="0 0 24 24" width="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M9 7h8v8"/></svg></div>
+          <h3>Meetup</h3>
+          <div class="stat"><span class="num">10</span><span class="lbl">hours</span></div>
+          <div class="legend">
+            <div class="l p">Productive</div>
+            <div class="l c">Chilling</div>
+            <div class="l r">Resting</div>
+          </div>
+        </div>
+
+        <!-- Schedule (tall) -->
+        <div class="card schedule">
+          <div class="sched-avs">
+            <span class="a" style="background:#ffd7b0">🧑🏽</span>
+            <span class="a" style="background:#cfe4ff">👨🏻</span>
+            <span class="a" style="background:#c9c2ff">🧔🏻</span>
+            <span class="a" style="background:#bfe3c0">🧑🏾</span>
+            <span class="a" style="background:#f6d6a8">👩🏻</span>
+            <span class="a" style="background:#ffc2c2">🧑🏻</span>
+            <span class="add-mini"><svg viewBox="0 0 24 24" width="12" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 5v14M5 12h14"/></svg></span>
+          </div>
+          <h3>Schedule</h3>
+          <div class="sub">See the progress here</div>
+
+          <div class="timeline">
+            <div class="axis"><span class="now">17:59</span></div>
+
+            <div class="t-row">
+              <div class="dots"></div>
+              <div class="t-item t-left">
+                <span class="mini-avs"><span class="a" style="background:#ffd7b0">🧑🏽</span><span class="a" style="background:#cfe4ff">👨🏻</span></span>
+                Expo Meeting <span class="go"><svg viewBox="0 0 24 24" width="13" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+              </div>
+              <div class="t-item t-right">
+                <span class="mini-avs"><span class="a" style="background:#c9c2ff">🧔🏻</span><span class="a" style="background:#bfe3c0">🧑🏾</span></span>
+                Beer with the guys <span class="go"><svg viewBox="0 0 24 24" width="13" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+              </div>
+            </div>
+
+            <div class="t-row">
+              <div class="dots"></div>
+              <div class="t-item hl t-left">
+                <span class="mini-avs"><span class="a" style="background:#ffd7b0;border-color:var(--lime)">🧑🏽</span><span class="a" style="background:#ffc2c2;border-color:var(--lime)">🧑🏻</span></span>
+                Beer with the guys <span class="go"><svg viewBox="0 0 24 24" width="13" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+              </div>
+            </div>
+
+            <div class="t-row">
+              <div class="dots"></div>
+              <div class="t-item t-right">
+                <span class="mini-avs"><span class="a" style="background:#f6d6a8">👩🏻</span><span class="a" style="background:#cfe4ff">👨🏻</span></span>
+                Expo Meeting <span class="go"><svg viewBox="0 0 24 24" width="13" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+              </div>
+            </div>
+
+            <div class="t-row">
+              <div class="dots"></div>
+              <div class="t-item icon-item t-left">
+                <span class="app"><svg viewBox="0 0 24 24" width="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 10l5-3v10l-5-3v-4zM3 6h12v12H3z"/></svg></span>
+                Zoom Meeting <span class="go"><svg viewBox="0 0 24 24" width="13" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+              </div>
+            </div>
+
+            <div class="t-row">
+              <div class="dots"></div>
+              <div class="t-item t-right">
+                <span class="mini-avs"><span class="a" style="background:#bfe3c0">🧑🏾</span><span class="a" style="background:#c9c2ff">🧔🏻</span></span>
+                Beer with the guys <span class="go"><svg viewBox="0 0 24 24" width="13" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+              </div>
+            </div>
+
+            <div class="t-row">
+              <div class="dots"></div>
+              <div class="t-item t-left">
+                <span class="mini-avs"><span class="a" style="background:#ffd7b0">🧑🏽</span><span class="a" style="background:#f6d6a8">👩🏻</span></span>
+                Group Reading <span class="go"><svg viewBox="0 0 24 24" width="13" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Municipal Twinning -->
+        <div class="card">
+          <div class="expand"><svg viewBox="0 0 24 24" width="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M9 7h8v8"/></svg></div>
+          <h3>Municipal Twinning</h3>
+          <div class="stat"><span class="num">30</span><span class="lbl">Participants</span></div>
+          <div class="avatars">
+            <span class="a" style="background:#ffd7b0">🧑🏽</span>
+            <span class="a" style="background:#cfe4ff">👨🏻</span>
+            <span class="a" style="background:#c9c2ff">🧔🏻</span>
+            <span class="a" style="background:#f6d6a8">👩🏻</span>
+            <span class="a" style="background:#bfe3c0">🧑🏾</span>
+          </div>
+        </div>
+
+        <!-- Zoom Meeting -->
+        <div class="card">
+          <div class="expand"><svg viewBox="0 0 24 24" width="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M9 7h8v8"/></svg></div>
+          <h3>Zoom Meeting</h3>
+          <div class="stat"><span class="num">30</span><span class="lbl">Participants</span></div>
+          <div class="avatars">
+            <span class="a" style="background:#ffd7b0">🧑🏽</span>
+            <span class="a" style="background:#ffc2c2">🧑🏻</span>
+            <span class="a" style="background:#c9c2ff">🧔🏻</span>
+            <span class="a" style="background:#cfe4ff">👨🏻</span>
+            <span class="a" style="background:#bfe3c0">🧑🏾</span>
+          </div>
+        </div>
+
+        <!-- Overall Progress -->
+        <div class="card">
+          <h3 style="margin-bottom:4px">Overall Progress</h3>
+          <a class="link" href="#">See full details</a>
+          <div class="progress-wrap">
+            <div class="gauge">
+              <svg width="220" height="220" viewBox="0 0 220 220">
+                <circle cx="110" cy="110" r="92" fill="none" stroke="#eceef0" stroke-width="20"/>
+                <circle cx="110" cy="110" r="92" fill="none" stroke="#1d1e2e" stroke-width="20" stroke-linecap="round"
+                        stroke-dasharray="578" stroke-dashoffset="430"/>
+                <circle cx="110" cy="110" r="66" fill="none" stroke="#eceef0" stroke-width="18"/>
+                <circle cx="110" cy="110" r="66" fill="none" stroke="url(#g1)" stroke-width="18" stroke-linecap="round"
+                        stroke-dasharray="415" stroke-dashoffset="104"/>
+                <defs>
+                  <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#57e06a"/>
+                    <stop offset="1" stop-color="#c8f532"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+              <div class="center"><div><div class="pct">75%</div><div class="cap">Completed</div></div></div>
+            </div>
+            <div class="goal">You are a <b>goal getter!</b></div>
+            <div class="prog-legend">
+              <div class="pl done">Done</div>
+              <div class="pl inprog">In progress</div>
+              <div class="pl wait">Waiting</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Last week -->
+        <div class="card">
+          <h3 style="margin-bottom:4px">Last week</h3>
+          <a class="link" href="#" style="color:var(--ink-3)">See the progress here</a>
+          <div class="week-list">
+            <div class="week-item">
+              <div class="ico"><svg viewBox="0 0 24 24" width="24" fill="none" stroke="#3b82f6" stroke-width="2"><path d="M12 2l3 3-3 3-3-3 3-3zM6 10l3 3-3 3-3-3 3-3zM18 10l3 3-3 3-3-3 3-3zM12 14l3 3-3 3-3-3 3-3z"/></svg></div>
+              <div class="meta"><div class="t">Training</div><div class="s">Viewed Just Now · Edited 35 mins ago</div></div>
+              <div class="tag tr">TR</div>
+            </div>
+            <div class="week-item">
+              <div class="ico"><svg viewBox="0 0 24 24" width="24" fill="none" stroke="#34d15b" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="3"/><path d="M8 20h8M12 18v2"/></svg></div>
+              <div class="meta"><div class="t">Group Hangout</div><div class="s">Viewed 2 mins ago · Edited 55 mins ago</div></div>
+              <div class="tag gh">GH</div>
+            </div>
+            <div class="week-item">
+              <div class="ico"><svg viewBox="0 0 24 24" width="24" fill="none" stroke="#ef4444" stroke-width="2"><circle cx="12" cy="5" r="2"/><path d="M12 8v5l4 3M12 13l-4 3M8 10l4-1"/></svg></div>
+              <div class="meta"><div class="t">Pukas Follow up</div><div class="s">Viewed yesterday</div></div>
+              <div class="tag pk">PK</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Audit Report (dark) -->
+        <div class="card audit">
+          <div class="close"><svg viewBox="0 0 24 24" width="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M18 6L6 18"/></svg></div>
+          <h3>Audit Report<br>Meeting</h3>
+          <div class="glow">🧑🏻</div>
+          <div class="name">Jude Williams</div>
+          <div class="call">
+            Calling you now
+            <span class="vic"><svg viewBox="0 0 24 24" width="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 10l5-3v10l-5-3v-4zM3 6h12v12H3z"/></svg></span>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
