@@ -1,0 +1,86 @@
+/* ============================================================
+   Scheduler v7 — Design tokens
+   Derived from the "Skead" neumorphic light system:
+   lime-green accents, rounded cards, soft dual-tone shadows.
+   ============================================================ */
+
+:root {
+  /* Surfaces */
+  --bg: #e9eaec;
+  --bg-2: #eef0f2;
+  --card: #ffffff;
+  --card-soft: #f4f5f7;
+  --card-line: #e7e9ec;
+
+  /* Ink */
+  --ink: #17181c;
+  --ink-2: #6b6f76;
+  --ink-3: #a2a6ad;
+  --on-dark: #ffffff;
+  --on-dark-2: #b9bcd0;
+
+  /* Brand */
+  --lime: #c8f532;
+  --lime-deep: #b6e81f;
+  --lime-soft: #eef8c8;
+  --green: #34d15b;
+  --green-bright: #57e06a;
+  --navy: #14152a;
+  --navy-2: #1c1d38;
+
+  /* Semantic / status */
+  --blue: #3b82f6;
+  --blue-soft: #cfe4ff;
+  --orange: #f97316;
+  --orange-soft: #ffe2cc;
+  --red: #ef4444;
+  --red-soft: #ffd6d6;
+  --amber: #f5b400;
+  --violet: #8b7bff;
+  --violet-soft: #ded9ff;
+  --teal: #14b8a6;
+
+  /* Task-type accents */
+  --tt-clean: #34d15b;
+  --tt-checkin: #3b82f6;
+  --tt-checkout: #f97316;
+  --tt-maintenance: #8b7bff;
+  --tt-inspection: #14b8a6;
+
+  /* Radii */
+  --r-lg: 26px;
+  --r-md: 18px;
+  --r-sm: 12px;
+  --r-pill: 999px;
+
+  /* Shadows */
+  --shadow: 0 18px 40px -22px rgba(20, 21, 42, 0.28);
+  --shadow-sm: 0 10px 22px -14px rgba(20, 21, 42, 0.3);
+  --shadow-soft: 6px 6px 16px rgba(180, 184, 192, 0.5),
+    -6px -6px 16px rgba(255, 255, 255, 0.9);
+  --shadow-soft-sm: 3px 3px 8px rgba(180, 184, 192, 0.5),
+    -3px -3px 8px rgba(255, 255, 255, 0.85);
+  --ring: 0 0 0 3px rgba(200, 245, 50, 0.55);
+
+  /* Spacing scale */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 22px;
+  --sp-6: 28px;
+
+  /* Type */
+  --font: "Poppins", "Segoe UI", -apple-system, BlinkMacSystemFont, system-ui,
+    sans-serif;
+  --fs-h1: 26px;
+  --fs-h2: 20px;
+  --fs-h3: 16px;
+  --fs-body: 14px;
+  --fs-sm: 13px;
+  --fs-xs: 11px;
+
+  /* Motion */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --dur: 0.18s;
+}

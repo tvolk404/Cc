@@ -1,0 +1,82 @@
+.daterail {
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+  background: var(--card);
+  border-radius: var(--r-lg);
+  padding: 12px;
+  box-shadow: var(--shadow);
+  margin-bottom: 16px;
+}
+.daterail__nav {
+  border: none;
+  background: var(--card-soft);
+  border-radius: 14px;
+  width: 44px;
+  color: var(--ink-2);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  transition: background var(--dur), color var(--dur);
+}
+.daterail__nav:hover { background: var(--bg-2); color: var(--navy); }
+.daterail__track {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  flex: 1;
+  scroll-snap-type: x proximity;
+  padding-bottom: 2px;
+}
+.drday {
+  scroll-snap-align: start;
+  flex: 0 0 66px;
+  border: 1.5px solid transparent;
+  background: var(--card-soft);
+  border-radius: var(--r-md);
+  padding: 9px 6px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  transition: transform var(--dur), border var(--dur), background var(--dur);
+}
+.drday:hover { transform: translateY(-2px); border-color: #d5d8dd; }
+.drday.is-today { border-color: var(--lime-deep); }
+.drday.is-sel { background: var(--navy); border-color: var(--navy); }
+.drday.is-sel .drday__wd,
+.drday.is-sel .drday__num { color: #fff; }
+.drday__wd { font-size: 10px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.04em; }
+.drday__num { font-size: 18px; font-weight: 700; }
+.drday__meter {
+  width: 6px;
+  height: 30px;
+  background: var(--bg-2);
+  border-radius: 4px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+.drday.is-sel .drday__meter { background: rgba(255, 255, 255, 0.15); }
+.drday__meter-fill {
+  width: 100%;
+  background: var(--lime);
+  border-radius: 4px;
+  min-height: 3px;
+}
+.drday__counts { display: flex; align-items: center; gap: 4px; }
+.drday__counts b { font-size: var(--fs-sm); font-weight: 700; }
+.drday.is-sel .drday__counts b { color: #fff; }
+.drday__counts i {
+  font-style: normal;
+  font-size: 10px;
+  font-weight: 700;
+  color: #fff;
+  background: var(--red);
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: 8px;
+  display: inline-grid;
+  place-items: center;
+}
