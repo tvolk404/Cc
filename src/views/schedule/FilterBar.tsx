@@ -44,21 +44,20 @@ export function FilterBar({
 
   return (
     <div className="filterbar">
-      <div className="filterbar__search">
-        <Icon name="search" size={16} />
-        <input
-          value={filters.search}
-          onChange={(e) => set({ search: e.target.value })}
-          placeholder="Search buildings"
-        />
-        {filters.search && (
-          <button onClick={() => set({ search: "" })} aria-label="Clear search">
-            <Icon name="x" size={14} />
-          </button>
-        )}
-      </div>
-
       <div className="filterbar__selects">
+        <div className="filterbar__search">
+          <Icon name="search" size={16} />
+          <input
+            value={filters.search}
+            onChange={(e) => set({ search: e.target.value })}
+            placeholder="Search buildings"
+          />
+          {filters.search && (
+            <button onClick={() => set({ search: "" })} aria-label="Clear search">
+              <Icon name="x" size={14} />
+            </button>
+          )}
+        </div>
         <MultiSelect
           label="Company"
           options={companyOptions(store.companies)}

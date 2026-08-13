@@ -28,14 +28,24 @@
   --navy: #14152a;
   --navy-2: #1c1d38;
 
-  /* Semantic / status */
+  /* Semantic / status — cool palette (no red/orange).
+     The legacy red / orange / amber token NAMES are kept so component CSS
+     need not change; their VALUES are now the cool attention + gold family. */
   --blue: #3b82f6;
-  --blue-soft: #cfe4ff;
-  --orange: #f97316;
-  --orange-soft: #ffe2cc;
-  --red: #ef4444;
-  --red-soft: #ffd6d6;
-  --amber: #f5b400;
+  --blue-soft: #d3e3ff;
+  --blue-ink: #285fb0;
+
+  /* attention / unassigned / critical → indigo-violet */
+  --red: #6d5efc;
+  --red-soft: #e7e4ff;
+  --red-ink: #4b3fcf;
+
+  /* watch / high-priority warmth → muted gold (not orange) */
+  --orange: #c8a02a;
+  --orange-soft: #f3ead0;
+  --orange-ink: #8a6d0f;
+  --amber: #cba52c;
+
   --violet: #8b7bff;
   --violet-soft: #ded9ff;
   --teal: #14b8a6;
@@ -43,9 +53,9 @@
   /* Task-type accents */
   --tt-clean: #34d15b;
   --tt-checkin: #3b82f6;
-  --tt-checkout: #f97316;
-  --tt-maintenance: #8b7bff;
-  --tt-inspection: #14b8a6;
+  --tt-checkout: #14b8a6;
+  --tt-maintenance: #7c86a6;
+  --tt-inspection: #5b6cc9;
 
   /* Radii */
   --r-lg: 26px;

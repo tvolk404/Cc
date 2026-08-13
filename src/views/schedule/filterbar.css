@@ -13,16 +13,20 @@
   align-items: center;
   gap: 10px;
   background: var(--card-soft);
-  border-radius: var(--r-pill);
-  padding: 11px 18px;
+  border: 1.5px solid transparent;
+  border-radius: var(--r-sm);
+  padding: 9px 14px;
   color: var(--ink-3);
-  max-width: 340px;
+  width: 210px;
+  flex-shrink: 0;
+  transition: border var(--dur);
 }
+.filterbar__search:focus-within { border-color: var(--navy); }
 .filterbar__search input {
   border: none;
   outline: none;
   background: none;
-  font-size: var(--fs-body);
+  font-size: var(--fs-sm);
   color: var(--ink);
   width: 100%;
 }
