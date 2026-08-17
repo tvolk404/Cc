@@ -1,0 +1,190 @@
+/* ============================================================
+   Haven — design tokens
+   A small system modelled on Apple's HIG: system greys, semantic
+   colours, an 8pt-ish spacing rhythm and the SF type scale.
+   ============================================================ */
+
+:root {
+  /* ── Typography ─────────────────────────────────────────── */
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+    "Inter", "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, monospace;
+
+  /* size / line-height / weight / tracking — mirrors SF text styles */
+  --t-large-title: 700 34px/1.14 var(--font-sans);
+  --t-title-1: 700 28px/1.2 var(--font-sans);
+  --t-title-2: 700 22px/1.25 var(--font-sans);
+  --t-title-3: 600 20px/1.3 var(--font-sans);
+  --t-headline: 600 17px/1.35 var(--font-sans);
+  --t-body: 400 17px/1.45 var(--font-sans);
+  --t-callout: 400 16px/1.4 var(--font-sans);
+  --t-subhead: 400 15px/1.4 var(--font-sans);
+  --t-footnote: 400 13px/1.35 var(--font-sans);
+  --t-caption: 400 12px/1.3 var(--font-sans);
+
+  --tracking-tight: -0.022em;
+  --tracking-snug: -0.014em;
+  --tracking-wide: 0.06em;
+
+  /* ── Spacing ────────────────────────────────────────────── */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
+  --sp-8: 32px;
+  --sp-10: 40px;
+  --sp-12: 48px;
+
+  /* ── Radii — continuous-corner feel ─────────────────────── */
+  --r-xs: 6px;
+  --r-sm: 10px;
+  --r-md: 14px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+  --r-pill: 999px;
+
+  /* ── Motion — Apple's standard ease-out curve ───────────── */
+  --ease: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast: 140ms;
+  --dur: 240ms;
+  --dur-slow: 420ms;
+
+  /* ── System accent colours (light) ──────────────────────── */
+  --blue: #007aff;
+  --green: #34c759;
+  --indigo: #5856d6;
+  --orange: #ff9500;
+  --pink: #ff2d55;
+  --purple: #af52de;
+  --red: #ff3b30;
+  --teal: #30b0c7;
+  --yellow: #ffcc00;
+  --mint: #00c7be;
+
+  --accent: var(--blue);
+  --accent-contrast: #ffffff;
+
+  /* ── Materials & greys (light) ──────────────────────────── */
+  --bg: #f2f2f7;
+  --bg-elevated: #ffffff;
+  --surface: rgba(255, 255, 255, 0.72);
+  --surface-solid: #ffffff;
+  --surface-raised: rgba(255, 255, 255, 0.86);
+  --chrome: rgba(246, 246, 248, 0.72);
+  --fill-quaternary: rgba(116, 116, 128, 0.08);
+  --fill-tertiary: rgba(116, 116, 128, 0.12);
+  --fill-secondary: rgba(116, 116, 128, 0.16);
+  --separator: rgba(60, 60, 67, 0.12);
+  --separator-opaque: #d8d8dd;
+
+  --label: #1d1d1f;
+  --label-secondary: rgba(60, 60, 67, 0.62);
+  --label-tertiary: rgba(60, 60, 67, 0.34);
+  --label-inverse: #ffffff;
+
+  /* ── Elevation ──────────────────────────────────────────── */
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.05);
+  --shadow-2: 0 2px 6px rgba(0, 0, 0, 0.06), 0 12px 28px rgba(0, 0, 0, 0.08);
+  --shadow-3: 0 8px 24px rgba(0, 0, 0, 0.1), 0 32px 64px rgba(0, 0, 0, 0.16);
+  --hairline: inset 0 0 0 0.5px rgba(0, 0, 0, 0.06);
+  --gloss: inset 0 0.5px 0 rgba(255, 255, 255, 0.7);
+
+  --blur: saturate(180%) blur(20px);
+
+  --sidebar-w: 248px;
+  --toolbar-h: 62px;
+  --content-max: 1360px;
+}
+
+/* ── Dark appearance ──────────────────────────────────────── */
+@media (prefers-color-scheme: dark) {
+  :root[data-theme="auto"] {
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"],
+:root[data-theme="auto"] {
+  /* placeholder so the cascade order below stays predictable */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root[data-theme="auto"] {
+    --blue: #0a84ff;
+    --green: #30d158;
+    --indigo: #5e5ce6;
+    --orange: #ff9f0a;
+    --pink: #ff375f;
+    --purple: #bf5af2;
+    --red: #ff453a;
+    --teal: #40cbe0;
+    --yellow: #ffd60a;
+    --mint: #63e6e2;
+
+    --bg: #000000;
+    --bg-elevated: #1c1c1e;
+    --surface: rgba(28, 28, 30, 0.72);
+    --surface-solid: #1c1c1e;
+    --surface-raised: rgba(44, 44, 46, 0.8);
+    --chrome: rgba(24, 24, 26, 0.68);
+    --fill-quaternary: rgba(118, 118, 128, 0.12);
+    --fill-tertiary: rgba(118, 118, 128, 0.2);
+    --fill-secondary: rgba(118, 118, 128, 0.28);
+    --separator: rgba(84, 84, 88, 0.5);
+    --separator-opaque: #38383a;
+
+    --label: #f5f5f7;
+    --label-secondary: rgba(235, 235, 245, 0.6);
+    --label-tertiary: rgba(235, 235, 245, 0.3);
+
+    --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.5), 0 4px 14px rgba(0, 0, 0, 0.4);
+    --shadow-2: 0 2px 8px rgba(0, 0, 0, 0.5), 0 16px 32px rgba(0, 0, 0, 0.5);
+    --shadow-3: 0 12px 32px rgba(0, 0, 0, 0.6), 0 40px 80px rgba(0, 0, 0, 0.7);
+    --hairline: inset 0 0 0 0.5px rgba(255, 255, 255, 0.08);
+    --gloss: inset 0 0.5px 0 rgba(255, 255, 255, 0.06);
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --blue: #0a84ff;
+  --green: #30d158;
+  --indigo: #5e5ce6;
+  --orange: #ff9f0a;
+  --pink: #ff375f;
+  --purple: #bf5af2;
+  --red: #ff453a;
+  --teal: #40cbe0;
+  --yellow: #ffd60a;
+  --mint: #63e6e2;
+
+  --bg: #000000;
+  --bg-elevated: #1c1c1e;
+  --surface: rgba(28, 28, 30, 0.72);
+  --surface-solid: #1c1c1e;
+  --surface-raised: rgba(44, 44, 46, 0.8);
+  --chrome: rgba(24, 24, 26, 0.68);
+  --fill-quaternary: rgba(118, 118, 128, 0.12);
+  --fill-tertiary: rgba(118, 118, 128, 0.2);
+  --fill-secondary: rgba(118, 118, 128, 0.28);
+  --separator: rgba(84, 84, 88, 0.5);
+  --separator-opaque: #38383a;
+
+  --label: #f5f5f7;
+  --label-secondary: rgba(235, 235, 245, 0.6);
+  --label-tertiary: rgba(235, 235, 245, 0.3);
+
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.5), 0 4px 14px rgba(0, 0, 0, 0.4);
+  --shadow-2: 0 2px 8px rgba(0, 0, 0, 0.5), 0 16px 32px rgba(0, 0, 0, 0.5);
+  --shadow-3: 0 12px 32px rgba(0, 0, 0, 0.6), 0 40px 80px rgba(0, 0, 0, 0.7);
+  --hairline: inset 0 0 0 0.5px rgba(255, 255, 255, 0.08);
+  --gloss: inset 0 0.5px 0 rgba(255, 255, 255, 0.06);
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+}

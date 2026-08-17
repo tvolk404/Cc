@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="description" content="Haven — property management dashboard" />
+    <title>Haven — Property Management</title>
+    <link rel="stylesheet" href="./assets/styles/tokens.css" />
+    <link rel="stylesheet" href="./assets/styles/app.css" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230A84FF'/%3E%3Cpath d='M8 15l8-6 8 6v9a1 1 0 0 1-1 1h-4v-6h-6v6H9a1 1 0 0 1-1-1z' fill='white'/%3E%3C/svg%3E" />
+  </head>
+  <body>
+    <div class="app" id="app">
+      <!-- ── Sidebar ─────────────────────────────────────────── -->
+      <aside class="sidebar" id="sidebar" aria-label="Primary">
+        <div class="sidebar__top">
+          <div class="traffic-lights" aria-hidden="true">
+            <span class="tl tl--red"></span><span class="tl tl--yellow"></span><span class="tl tl--green"></span>
+          </div>
+        </div>
+
+        <div class="brand">
+          <div class="brand__mark" aria-hidden="true"></div>
+          <div class="brand__text">
+            <span class="brand__name">Haven</span>
+            <span class="brand__sub">Property Group</span>
+          </div>
+        </div>
+
+        <nav class="nav" id="nav" aria-label="Sections"></nav>
+
+        <div class="sidebar__footer">
+          <div class="occupancy-pill" id="sidebarOccupancy"></div>
+          <button class="account" type="button" id="accountBtn">
+            <span class="avatar avatar--me">TV</span>
+            <span class="account__text">
+              <span class="account__name">Tomaž Volk</span>
+              <span class="account__role">Portfolio manager</span>
+            </span>
+            <svg class="account__chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </aside>
+
+      <!-- ── Main ────────────────────────────────────────────── -->
+      <div class="main">
+        <header class="toolbar" id="toolbar">
+          <button class="icon-btn toolbar__toggle" id="sidebarToggle" type="button" aria-label="Toggle sidebar"></button>
+
+          <div class="toolbar__titles">
+            <h1 class="toolbar__title" id="viewTitle">Overview</h1>
+            <p class="toolbar__subtitle" id="viewSubtitle"></p>
+          </div>
+
+          <div class="toolbar__actions">
+            <label class="search" id="searchWrap">
+              <svg viewBox="0 0 16 16" aria-hidden="true" class="search__icon"><circle cx="7" cy="7" r="4.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10.6 10.6L14 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+              <input type="search" id="search" placeholder="Search" aria-label="Search portfolio" spellcheck="false" />
+              <kbd class="search__kbd">⌘K</kbd>
+            </label>
+
+            <div class="seg seg--theme" role="radiogroup" aria-label="Appearance" id="themeSeg"></div>
+
+            <button class="btn btn--primary" id="primaryAction" type="button">
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3.2v9.6M3.2 8h9.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+              <span id="primaryActionLabel">New property</span>
+            </button>
+          </div>
+        </header>
+
+        <main class="content" id="content" tabindex="-1"></main>
+      </div>
+    </div>
+
+    <!-- ── Sheet (modal) ─────────────────────────────────────── -->
+    <div class="scrim" id="scrim" hidden></div>
+    <section class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" hidden></section>
+
+    <!-- ── Toast ─────────────────────────────────────────────── -->
+    <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+    <script type="module" src="./src/app.js"></script>
+  </body>
+</html>
