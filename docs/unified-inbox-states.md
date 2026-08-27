@@ -70,3 +70,61 @@ Full screens are 1600×980, three panes — thread list 380 / thread 880 / conte
 
 - Channel badges are simplified coloured squares; swap for the real Airbnb / WhatsApp / email icons from the Platform library.
 - The source `Unified Inbox States.dc.html` was not present in this repository, so the frames were built from the handoff brief (structure, copy and tokens) rather than parsed from the markup.
+
+---
+
+# Platform-style recreation (page `123`)
+
+The same states redrawn inside the real Hospiria Platform inbox, matched to the
+`Inbox July 2026` designs on the reference page.
+
+**Figma:** [Platform → page `123`](https://www.figma.com/design/HxdFjKuMtRVGVfrO2FYUC0/Platform?node-id=15012-66455)
+**Reference followed:** [page `456` → `Inbox July 2026`](https://www.figma.com/design/HxdFjKuMtRVGVfrO2FYUC0/Platform?node-id=15012-66456)
+
+Twelve 1440×900 screens in two sections. The Hospiria nav and the Airbnb /
+WhatsApp / email / notes icons are cloned from the reference screens, so they are
+the real assets rather than stand-ins.
+
+## Section — Enquiries in the Inbox (`15016:9397`)
+
+| Frame | Node | What it shows |
+|---|---|---|
+| E1 · Lead thread | `15016:9345` | Type filter on Enquiries, amber LEAD row selected, enquiry panel, restricted template picker |
+| E2 · Request to book | `15018:9387` | Countdown chips on row and header, in-thread expiry banner, request panel with Accept/Decline |
+| E3 · Unassigned inbound | `15018:9779` | Unassigned filter, Link to booking as the header's primary action, ranked matches panel |
+| E4 · Post-merge booking thread | `15021:9619` | Undo-merge banner, both timeline dividers, full booking panel |
+
+## Section — Email compose (`15016:9398`)
+
+| Frame | Node | What it shows |
+|---|---|---|
+| M1 · Inline compose (Option A) | `15021:10036` | To/CC/Subj docked in the thread; Sent, Failed–Retry and Bounced bubble states |
+| M2 · Expand to modal | `15022:9790` | Same draft promoted over a dimmed thread, Send enabled |
+| M3 · Modal-first (Option B) | `15022:10176` | Plain bar + Compose email button; modal with Send disabled |
+| M4 · Template autofill | `15025:9965` | Picker open, subject and body filled and tinted, merge fields resolved |
+| M5 · Unassigned queue | `15025:10181` | The queue with a count, nothing selected |
+| M6 · Link to booking | `15027:10018` | Search, three ranked bookings, move-earlier-mail choice |
+| M7 · Empty state | `15027:10143` | Unassigned is clear, mirroring the reference's "All caught up" |
+| M8 · Unlink & relink | `15027:10533` | Thread ··· menu open, with the resulting toast |
+
+## Platform tokens used
+
+Untitled UI, font **Rubik** (Regular / Medium / Bold), type at 12/18, 14/20, 16/24, 20/30.
+
+- **Brand** `#005c59` solid, `#006b5e`, tint `#f4fcf7`, border `#90f0c9`, mint `#c6f7df`
+- **Text** `#101828` / `#344054` / `#475467` / `#667085`, disabled `#98a2b3`
+- **Border** `#d0d5dd` primary, `#eaecf0` secondary · **Background** `#ffffff` / `#f9fafb` / `#f2f4f7`
+- **Utility** success `#ecfdf3`/`#079455` · error `#fee4e2`/`#d92d20` · warning `#fffaeb`/`#b54708` · indigo `#eef4ff`/`#3538cd` · blue-light `#0086c9` · purple `#7a5af8`
+- Radius 4 (chips) / 6 (buttons, pills) / 8 (cards) / 12 (modals); shadow-xs `0 1 2 rgba(16,24,40,.05)`
+- Panes 325 / 851 / 264 under a 54px nav; rows padded 10/13 with gap 9; chips padded 1/6; pills padded 2/9
+
+### Enquiry types mapped onto the Platform palette
+
+| Type | Chip | Rationale |
+|---|---|---|
+| Lead | `#fffaeb` / `#b54708` | warning — needs attention, no deadline |
+| Request to book | `#fee4e2` / `#d92d20` | error — expires, costs response rate |
+| Direct enquiry | `#f0f9ff` / `#0086c9` | blue-light — informational |
+| Unassigned | `#f2f4f7` / `#475467` | gray — no booking context yet |
+
+Selected rows keep the reference's `#f4fcf7` tint with a 3px `#17b26a` left accent.
