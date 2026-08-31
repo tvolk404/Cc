@@ -175,8 +175,33 @@ Badges are 16px tall, radius 2, 10px Rubik Medium. The second slot on the badge
 line is reserved for a countdown (warning pill) or a booking reference (grey
 pill) and stays empty otherwise. Selected rows fill `#f4fcf7`.
 
-Layout follows the direction exactly: panes 325 / 827 / 288 under the 54px nav;
+Layout: panes **325 / 697 / 418** under the 54px nav (the sidebar takes the
+shared component's real width, and the thread pane gives up the difference);
 rows 324×114 with a 3px accent, a 12px pad and a hairline between the meta block
 and the preview; bubbles radius 8 with `#ffffff` inbound and `#effff5` outbound
 on `#e5e7eb`; filter tabs in a 300×32 white capsule with the active tab a solid
 `#006b5e` pill.
+
+## Right sidebar
+
+Rebuilt to match the **Unified sidebar** components in
+[Shared components](https://www.figma.com/design/0ePTVTQLGkiNSxaImq3F8K/Shared-components?node-id=0-1)
+rather than the narrower panel in the enquiry direction file.
+
+| Part | Spec |
+|---|---|
+| Frame | 418 wide, white, 1px `#e4e6e7` left border |
+| Status strip | 40 tall, 24px sides, type-tinted fill, label Rubik Bold 11 with a right-aligned status line |
+| Tabs | 48 tall, 24px sides, 20px gap — General / Extras / Guest / Property / Ask AI; Rubik Bold 13, active `#014f45` over a 2px `#006b5e` underline, inactive `#667085` |
+| Section | 24px padding, 18px gap under a Rubik Medium 11 `#7a8288` label, rows 5px apart, bottom border `#e4e6e7` |
+| Detail row | 370×40, radius 12, fill `#f3f2ee`, 8px padding, 26px white circular icon badge, label Rubik Medium 13 `#1a1f1e`, trailing tag / value / copy / arrow |
+| Status row | 370×44, radius 12, 28px white circular icon, label Rubik Medium 10 over value Rubik SemiBold 13; green `#c6f7df`/`#15803d`, red `#fee4e2`/`#d92d20`, amber `#fef0c7`/`#b54708`, grey `#f2f4f7`/`#475467` |
+| Footer | 24px sides, a 46×46 `⋮` overflow button and one filled `#006b5e` action, top border `#e4e6e7` |
+
+The strip fill carries the type: lead `#e9e6ff`, enquiry `#b9e6fe`, request
+`#fef0c7`, booking `#c6f7df`, closed `#eaecf0`.
+
+Two consequences worth noting: availability and expiry are now expressed as
+**status rows** rather than a bespoke calendar strip, and the footer carries a
+single filled action with the secondary ones in the `⋮` — so Decline stays in
+the in-thread banner where its cost is explained.
