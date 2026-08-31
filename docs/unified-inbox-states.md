@@ -128,3 +128,55 @@ Untitled UI, font **Rubik** (Regular / Medium / Bold), type at 12/18, 14/20, 16/
 | Unassigned | `#f2f4f7` / `#475467` | gray — no booking context yet |
 
 Selected rows keep the reference's `#f4fcf7` tint with a 3px `#17b26a` left accent.
+
+---
+
+# Enquiry states, annotated (page `000`)
+
+Enquiry-only documentation, drawn in the refined enquiry direction and annotated
+with the reasoning behind each decision.
+
+**Figma:** [Platform → page `000`](https://www.figma.com/design/HxdFjKuMtRVGVfrO2FYUC0/Platform?node-id=15056-10082)
+**Direction followed:** [enquiry screen `15034:96426`](https://www.figma.com/design/HxdFjKuMtRVGVfrO2FYUC0/Platform?node-id=15034-96426)
+
+Each state is a 1440×900 screen with numbered pins that match a column of
+annotation cards beside it.
+
+## Section — Enquiry states, annotated (`15059:9354`)
+
+| State | What it documents |
+|---|---|
+| S1 · Lead | Property and dates known, no offer. Ten pins: type accent, reserved badge slot, the hairline, the banner, the ENQUIRY divider, panel strip, dual references, parsed fields, availability, single primary action |
+| S2 · Direct enquiry | No property or dates. Identity fallback, "Not stated" over hiding, availability that refuses to guess, demoted primary |
+| S3 · Request to book | Live countdown, deadline-first sort, decision in banner and panel, both costs stated, "replying is not accepting" |
+| S4 · Request expired | Actions removed rather than disabled, grey accent with the badge intact, attribution, "the dates were never blocked", recovery path |
+| S5 · Converted to booking | Both dividers kept, 30-day undo in the banner, enquiry reference retained, type flip, panel trades availability for money |
+| S6 · Closed lost | Tag over type, dimming as sorting, attribution, auto-reopen on reply, the unlikely door left open |
+| S7 · Enquiries filter · empty | One filter for three types, no zero badges, deadline-first sort, empty copy, booking filters hidden not disabled |
+| S8 · Create booking | Prefilled from parsed data, every field editable, consequences before the click, undo window named up front, verb-matched button |
+
+## Section — Enquiry model (`15059:9355`)
+
+- **Lifecycle** (`15067:9482`) — enquiry → lead → booking; request → booking or expired; any live thread → closed lost → reopened.
+- **Type tokens** (`15066:9582`) — accent, badge fill/border/text, when each type applies, its primary action, and whether it may show a countdown.
+- **Decision log** (`15066:9646`) — the ten rules every state satisfies.
+
+## Type tokens as drawn
+
+| Type | Accent | Badge fill · border | Badge text |
+|---|---|---|---|
+| Lead | `#7a5af8` | `#f4f3ff` · `#bdb4fe` | `#6938ef` |
+| Enquiry | `#0ba5ec` | `#f0f9ff` · `#7cd4fd` | `#026aa2` |
+| Request | `#f79009` | `#fffaeb` · `#fedf89` | `#b54708` |
+| Booking | `#006b5e` | `#f4fcf7` · `#90f0c9` | `#005c59` |
+| Closed | `#d0d5dd` | `#f9fafb` · `#d0d5dd` | `#667085` |
+
+Badges are 16px tall, radius 2, 10px Rubik Medium. The second slot on the badge
+line is reserved for a countdown (warning pill) or a booking reference (grey
+pill) and stays empty otherwise. Selected rows fill `#f4fcf7`.
+
+Layout follows the direction exactly: panes 325 / 827 / 288 under the 54px nav;
+rows 324×114 with a 3px accent, a 12px pad and a hairline between the meta block
+and the preview; bubbles radius 8 with `#ffffff` inbound and `#effff5` outbound
+on `#e5e7eb`; filter tabs in a 300×32 white capsule with the active tab a solid
+`#006b5e` pill.
