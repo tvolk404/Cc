@@ -332,3 +332,44 @@ strip with Enquiries current — with three empty states:
   does not jump when a thread arrives.
 
 The other seven screens were left exactly where they had been moved to.
+
+---
+
+# Narrower sidebar on page `15167:96449`
+
+The right sidebar read as too wide at 418px, so the whole set was copied to
+page **`15167:96449`** ("222") with the panes rebalanced:
+
+| Pane | Before | After |
+|---|---|---|
+| Thread list | 325 | 325 |
+| Thread | 697 | **755** |
+| Right sidebar | 418 | **360** |
+
+360 is the narrowest the sidebar goes without reworking it: the five sidebar
+tabs (General / Extras / Guest / Property / Ask AI) measure 233px of text, so
+at the old 20px gap they need 361px inside 24px padding. The gap was tightened
+to **16px**, which leaves the tab row 297px wide inside a 312px content box.
+
+Everything inside the sidebar follows the width instead of being redrawn: the
+section frames, the 370px detail and status rows (now 312px) and the footer
+button were switched to **fill** their parent, so the panel is one auto-layout
+that resizes cleanly if the width is changed again. The thread pane fills the
+58px it gets back.
+
+Two things had to move by hand:
+
+- **S1, pin 6** pointed into the sidebar type strip at x=1090. With the sidebar
+  starting 58px further right, that landed on the "LEAD" label, so the pin now
+  straddles the pane border. Same for **S7, pin 4**.
+- **S8** — the Make a booking dialog is centred on the thread pane, so it and
+  its five pins moved 29px right.
+
+The screens sit in one row at y=0, 2405px apart, with the same 67px divider
+rectangles between them, in order S1 → S8.
+
+## Not carried over
+
+The "Enquiry model" section (lifecycle diagram, type table, rule cards) was
+deleted from page `15167:13253` by hand before this copy, so it is not on
+`15167:96449` either. It can be rebuilt from the description above.
