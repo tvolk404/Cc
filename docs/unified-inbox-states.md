@@ -240,3 +240,95 @@ At the design system's own tab size, only **four** filters fit the 325px list
 pane, not five. The mock shows All / Mine / Unassigned / Enquiries and moves
 Resolved into the filter icon. Annotation 6 on S7 records this — if all five
 are needed, the strip has to scroll or the list pane has to be wider.
+
+---
+
+# Rebuild on page `15167:13253`
+
+The user reported that the earlier pages missed the thread/row logic that had
+since been defined on page **`15030:83369`** ("threads"), and asked for
+everything to be redone on page **`15167:13253`**. Everything below describes
+that rebuild.
+
+## The row logic taken from `15030:83369`
+
+This is the part that was wrong before. A row in the thread list is now:
+
+| Part | Rule |
+|---|---|
+| Left bar | 3px, full height of the row, in the type colour |
+| Row background | white; only the open row is tinted with the type's light colour |
+| Avatar | 16×16 **rounded square** (radius 4) filled with the type colour, white initials at Rubik Medium 9 |
+| Name | Rubik **Medium 12** `#101828` — not bold 13, and not a circular avatar |
+| Channel | 14px channel icon straight after the name |
+| Status | `user-x-01` (nobody owns it), `check-circle` (resolved) or `alert-circle` (urgent), placed **before** the time |
+| Time | Rubik Regular 12 `#667085` |
+| Line 2 | property and dates, Rubik Regular 12 `#667085` |
+| Line 3 | badges on the left, the pill on the right |
+| Divider | 1px `#eaecf0` hairline, then the last message preview |
+
+Type colours, straight from the reference:
+
+| Type | Accent | Row tint when open | Pill on the right |
+|---|---|---|---|
+| Lead | `#7a5af8` | white | none |
+| Enquiry | `#0ba5ec` | white | countdown `#fffaeb` / `#fedf89` / `#b54708` with a clock |
+| Request | `#f79009` | white | same countdown pill |
+| Booking | `#006b5e` | `#f4fcf7` | reference `#f9fafb` / `#d0d5dd` / `#667085` with a hash |
+
+Two more corrections against the reference:
+
+- Badges are the DS **Badge** with `Size=sm`, `Type=Badge color` (16px tall),
+  not `Pill outline`.
+- The filter strip is the reference's own 300×32 tab strip built from
+  `_Tab button base` with `Type=Button white`. **All five filters fit** —
+  All / Mine / Resolved / Unassigned / Enquiries. This supersedes the note in
+  the previous section that said only four fit; that was a consequence of
+  using the full-size DS `Horizontal tabs` component instead of the strip the
+  reference actually uses.
+
+## What is on the page
+
+**Screens** (each is a group: the 1440×900 screen plus a 380-wide annotation
+column at +1480, with numbered pins on the screen matching the cards):
+
+| # | State | Screen node |
+|---|---|---|
+| S1 | Lead | `15167:85984` (annotations `15246:9520`) |
+| S2 | Direct enquiry | `15167:86456` (group `15167:86455`) |
+| S3 | Request to book | `15247:10009` (group `15247:10098`) |
+| S4 | Request expired | `15247:10516` (annotations `15247:10598`) |
+| S5 | Converted to booking | `15248:9857` (group `15248:9940`) |
+| S6 | Closed lost | `15248:10347` (group `15248:10430`) |
+| S7 | Enquiries filter · empty | `15258:9690` (group `15259:9791`) |
+| S8 | Make a booking | `15248:11070` (group `15248:11153`) |
+
+**Section `15244:8937` — "Enquiry model — lifecycle, tokens & rules"**
+
+- `15253:9812` — lifecycle diagram. Six state boxes, each outlined in its type
+  colour. Top line: Lead → Enquiry → Request to book → Booking. Bottom line
+  holds the two end points, Closed lost and Request expired, each reached by a
+  labelled down arrow. Arrowheads are vectors, not glyphs, so they render on
+  any machine.
+- `15254:9939` — type table. One row per type showing the accent hex, the row
+  background when open, the avatar, a real DS Badge instance and the pill, plus
+  a plain sentence on when the type is used.
+- `15255:9814` — ten rule cards in two columns, written in short everyday
+  sentences.
+
+## S7 was rebuilt
+
+While this work was in progress the page was being edited by hand in Figma:
+the two wrapper sections around the screens were removed, the screens were laid
+out in one row with 67px divider rectangles between them, and S7 was lost with
+its section. S7 was rebuilt from S3 — same nav, same list header, same filter
+strip with Enquiries current — with three empty states:
+
+- **List**: a 44px `#f2f4f7` circle with a `search-lg` icon, "No enquiries
+  right now", one sentence saying what the filter is doing, and a single DS
+  Secondary gray button "Show all threads".
+- **Thread**: "Nothing to open" with one sentence, on `#fcfcfd`.
+- **Right panel**: kept at its full 418px with one muted line, so the layout
+  does not jump when a thread arrives.
+
+The other seven screens were left exactly where they had been moved to.
