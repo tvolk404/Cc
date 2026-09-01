@@ -205,3 +205,38 @@ Two consequences worth noting: availability and expiry are now expressed as
 **status rows** rather than a bespoke calendar strip, and the footer carries a
 single filled action with the secondary ones in the `⋮` — so Decline stays in
 the in-thread banner where its cost is explained.
+
+---
+
+## Annotations rewritten in plain English
+
+All 47 annotation cards, the lifecycle diagram, the token table and the
+decision log were rewritten with short sentences and everyday words, and
+without English idioms.
+
+## Built on the Hospiria DS library
+
+The **Hospiria DS** library (`lk-522c0c73…`) is subscribed to the Platform file.
+These parts are now real library instances instead of hand-drawn frames:
+
+| Part | DS component | Configuration |
+|---|---|---|
+| All buttons | `Buttons/Button` | Primary for the filled action, Secondary gray for the rest, `State=Disabled` for the inactive Send; `sm` in headers and banners, `lg` in the sidebar footer |
+| Decline | `Buttons/Button destructive` | `Hierarchy=Secondary`, `sm` |
+| Type and status badges | `Badge` | `Type=Pill outline`, `Size=sm` — Purple = lead, Blue light = enquiry, Warning = request and countdown, Brand = booking, Gray = closed and booking reference |
+| List filters | `Horizontal tabs` | `Type=Button primary`, `Size=sm`, `Current=True` on the active tab |
+| Sidebar tabs | `Horizontal tabs` | `Type=Underline`, `Size=sm` |
+| Search field | `Input field` | `Size=sm`, `Type=Icon leading`, `State=Placeholder`, icon swapped to `search-lg` |
+
+Still drawn by hand, because the library publishes no component for them:
+thread list rows, the sidebar detail and status rows, in-thread banners,
+message bubbles, the ENQUIRY / BOOKING dividers and the small row avatars.
+These are built from DS variables (Rubik type ramp, brand and utility colours,
+radius and spacing tokens) and from the two reference files.
+
+### One consequence
+
+At the design system's own tab size, only **four** filters fit the 325px list
+pane, not five. The mock shows All / Mine / Unassigned / Enquiries and moves
+Resolved into the filter icon. Annotation 6 on S7 records this — if all five
+are needed, the strip has to scroll or the list pane has to be wider.
