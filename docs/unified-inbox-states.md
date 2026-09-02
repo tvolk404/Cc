@@ -373,3 +373,55 @@ rectangles between them, in order S1 → S8.
 The "Enquiry model" section (lifecycle diagram, type table, rule cards) was
 deleted from page `15167:13253` by hand before this copy, so it is not on
 `15167:96449` either. It can be rebuilt from the description above.
+
+---
+
+# "Life of a thread" board — page `15167:13253`
+
+Node **`15307:8888`**, a 2500×1900 board sitting to the right of the Enquiry
+model section. It answers one question end to end: what happens to a thread
+from the first message to the last.
+
+## Correction: Lead and Enquiry were the wrong way round
+
+The earlier lifecycle diagram and type table said a **lead has no dates** and an
+**enquiry has dates**. The screens say the opposite, and the screens are right:
+
+- **S1 · Lead** — row reads `Sea View Loft 3B · 12–16 Sep · 2 guests`, the
+  sidebar shows `Asking about` filled in with property, dates, guests and an
+  indicative price, and the main button is **Create booking**.
+- **S2 · Direct enquiry** — row reads `No property · dates not given`, and the
+  annotations are about *not* guessing the dates. The main action is to ask for
+  them.
+
+So the real order is **Enquiry → Lead → Request to book → Booking**. An enquiry
+is a question; a lead is a question with enough detail to price. The type table
+in the model section has been rewritten and reordered to match, and the enquiry
+row no longer shows a countdown pill — only a request to book has a real
+deadline.
+
+## What is on the board
+
+1. **How a thread starts** — three cards: any channel, one thread per guest and
+   property, then we read the message and set the type.
+2. **The states a thread goes through** — six cards on a rail. Each names the
+   state and its accent hex, says how a thread gets there, shows a **real row
+   preview** built to the row logic (3px accent bar, 16px square avatar, Medium
+   12 name, DS `Badge color` badge, pill), and says what takes it away.
+   Forward line: Enquiry → Lead → Request to book → Booking. Below it the two
+   end points, Closed lost and Request expired, each on a labelled down arrow.
+   A note records that a request can arrive straight from the channel with no
+   enquiry or lead before it.
+3. **Two things that run on top of the state** — ownership (unassigned / late /
+   resolved, with the three DS status icons) and the timer (above an hour,
+   under an hour, at zero). Both change independently of the type.
+4. **What this means for the list** — four rules: colour before words, requests
+   first sorted by time left, the Enquiries filter hides bookings, and one
+   thread keeps its whole history.
+
+## Note on the file
+
+Page `15167:96449` ("222"), which held the narrowed-sidebar copy of all eight
+states, was deleted by hand before this board was built, and node
+`15167:97332` does not exist. The eight screens are not currently on
+`15167:13253` either — only the model section and this board.
